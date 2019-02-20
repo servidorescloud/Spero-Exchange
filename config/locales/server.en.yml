@@ -1072,7 +1072,7 @@ en:
         email: E-mail Address
         password: Password
       identity:
-        email: Example：xiaobai@example.com
+        email: Example：user@email.com
         password: Please set your login password
         password_confirmation: Confirm your password
         edit:
@@ -1087,7 +1087,7 @@ en:
         origin_volume: Sell Volume
         sum: Total Turnover
       reset_password:
-        email: For example：xiaobai@example.com
+        email: For example：user@email.com
         password: Please set your login password!
       withdraw:
         bank:

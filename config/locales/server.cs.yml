@@ -1050,7 +1050,7 @@ cs:
         origin_volume: Objem prodejů
         sum: Celkový obrat
       reset_password:
-        email: Příklad：xiaobai@example.com
+        email: Příklad：user@email.com
         password: Prosím nastavte Vaše přihlašovací heslo!
       withdraw:
         bank:

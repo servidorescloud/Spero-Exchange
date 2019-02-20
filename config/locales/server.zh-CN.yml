@@ -1028,7 +1028,7 @@ zh-CN:
         email: 邮箱地址
         password: 密码
       identity:
-        email: 例如：xiaobai@example.com
+        email: 例如：user@email.com
         password: 请设置登录密码
         password_confirmation: 确认密码
         edit:
@@ -1046,7 +1046,7 @@ zh-CN:
         origin_volume: 卖出数量
         sum: 总成交金额
       reset_password:
-        email: 例如：xiaobai@example.com
+        email: 例如：user@email.com
         password: 请设置登录密码
       withdraw:
         bank:
