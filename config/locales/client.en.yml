@@ -44,7 +44,7 @@ en:
         btc: BTC
       deposit_brl:
         title: Depósito em Reais Brasileiros
-        desc: "ATENÇÃO! ESTE PAINEL É DE USO APENAS PARA USUÁRIOS BRASILEITROS. Para depositar via transferência bancária, siga estas etapas:"
+        desc: "ATENÇÃO! ESTE PAINEL É DE USO APENAS PARA USUÁRIOS BRASILEIROS. Para depositar via transferência bancária, siga estas etapas:"
         desc_item_1: "1. Envie o formulário para obter o código de identificação."
         desc_item_2: "2. Transfira o dinheiro para a conta bancária da SPERO EXCHANGE. Certifique-se de que seu código de referência foi escrito no formulário que você preencheu."
         desc_item_3: "3. Seu depósito será confirmado assim que o dinheiro for recebido."
@@ -100,7 +100,7 @@ en:
 
       withdraw_brl:
         title: Saques em Reais Brasileiros
-        intro: ATENÇÃO! ESTE PAINEL É DE USO APENAS PARA USUÁRIOS BRASILEITROS. Selecione o banco para onde deseja sacar, insira o número da agência e conta, em seguida complete a solicitação.
+        intro: ATENÇÃO! ESTE PAINEL É DE USO APENAS PARA USUÁRIOS BRASILEIROS. Selecione o banco para onde deseja sacar, insira o número da agência e conta, em seguida complete a solicitação.
         intro_2: Sua conta bancária e nome devem ser os mesmos do nome da autenticação de nome real.
         attention: "Horas de trabalho: 10:00 - 16:00"
         account_name: Nome da conta
