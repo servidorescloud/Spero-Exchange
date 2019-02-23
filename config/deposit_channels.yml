@@ -2,7 +2,7 @@
   key: satoshi
   currency: btc
   sort_order: 1
-  min_confirm: 1
+  min_confirm: 2
   max_confirm: 3
 - id: 400
   key: bank
@@ -14,3 +14,23 @@
       branch: 'Your Bank Branch'
       holder: 'Your Account Holder'
       account: 'Your Account Number'
+- id: 600
+  key: doge
+  currency: doge
+  min_confirm: 9
+  max_confirm: 10
+- id: 800
+  key: ltc
+  currency: ltc
+  min_confirm: 9
+  max_confirm: 10
+- id: 1000
+  key: spero
+  currency: spero
+  min_confirm: 9
+  max_confirm: 10
+- id: 1200
+  key: mxt
+  currency: mxt
+  min_confirm: 199
+  max_confirm: 200

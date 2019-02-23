@@ -21,6 +21,10 @@ en:
       deposits/bank: Deposit Bank
       withdraws/bank: Withdraw Bank
       withdraws/satoshi: Withdraw
+      withdraws/doge: Withdraw
+      withdraws/ltc: Withdraw
+      withdraws/spero: Withdraw
+      withdraws/mxt: Withdraw
     attributes:
       api_token:
         access_key: Access Key
@@ -174,7 +178,87 @@ en:
         amount: Amount
         confirmations: Confirmation
         aasm_state_text: State
+      deposits/doge:
+        created_at: Created At
+        txid: Transaction ID
+        amount: Amount
+        confirmations: Confirmation
+        aasm_state_text: State
+      deposits/ltc:
+        created_at: Created At
+        txid: Transaction ID
+        amount: Amount
+        confirmations: Confirmation
+        aasm_state_text: State
+      deposits/spero:
+        created_at: Created At
+        txid: Transaction ID
+        amount: Amount
+        confirmations: Confirmation
+        aasm_state_text: State
+      deposits/mxt:
+        created_at: Created At
+        txid: Transaction ID
+        amount: Amount
+        confirmations: Confirmation
+        aasm_state_text: State
       withdraws/satoshi:
+        id: ID
+        member_name: Account
+        currency_obj_key_text: Currency
+        state_and_actions: State/Action
+        fund_extra_text: Withdraw Label
+        fund_extrat: Withdraw Label
+        fund_source: Bank
+        fund_uid: Account
+        created_at: Created At
+        sum: Amount
+        amount: Amount
+        remark: Remark
+        fee: Fee
+      withdraws/doge:
+        id: ID
+        member_name: Account
+        currency_obj_key_text: Currency
+        state_and_actions: State/Action
+        fund_extra_text: Withdraw Label
+        fund_extrat: Withdraw Label
+        fund_source: Bank
+        fund_uid: Account
+        created_at: Created At
+        sum: Amount
+        amount: Amount
+        remark: Remark
+        fee: Fee
+      withdraws/ltc:
+        id: ID
+        member_name: Account
+        currency_obj_key_text: Currency
+        state_and_actions: State/Action
+        fund_extra_text: Withdraw Label
+        fund_extrat: Withdraw Label
+        fund_source: Bank
+        fund_uid: Account
+        created_at: Created At
+        sum: Amount
+        amount: Amount
+        remark: Remark
+        fee: Fee
+      withdraws/spero:
+        id: ID
+        member_name: Account
+        currency_obj_key_text: Currency
+        state_and_actions: State/Action
+        fund_extra_text: Withdraw Label
+        fund_extrat: Withdraw Label
+        fund_source: Bank
+        fund_uid: Account
+        created_at: Created At
+        sum: Amount
+        amount: Amount
+        remark: Remark
+        fee: Fee
+      withdraws/mxt:
         id: ID
         member_name: Account
         currency_obj_key_text: Currency
@@ -235,6 +319,14 @@ en:
             address:
               satoshi_ismine: Used Address
               satoshi_invalid: Invalid Address
+              doge_ismine: Used Address
+              doge_invalid: Invalid Address
+              ltc_ismine: Used Address
+              ltc_invalid: Invalid Address
+              spero_ismine: Used Address
+              spero_invalid: Invalid Address
+              mxt_ismine: Used Address
+              mxt_invalid: Invalid Address
         withdraw:
           account_balance_is_poor: Account balance is insufficient
           attributes:
@@ -244,6 +336,30 @@ en:
               poor: insufficient
               bank_min: Less 5000.00
         withdraws/satoshi:
+          attributes:
+            fund_uid:
+              blank: Please enter your withdrawal address
+              invalid: Invalid withdrawals address, please review.
+              ismine: Please use a new address.
+        withdraws/doge:
+          attributes:
+            fund_uid:
+              blank: Please enter your withdrawal address
+              invalid: Invalid withdrawals address, please review.
+              ismine: Please use a new address.
+        withdraws/ltc:
+          attributes:
+            fund_uid:
+              blank: Please enter your withdrawal address
+              invalid: Invalid withdrawals address, please review.
+              ismine: Please use a new address.
+        withdraws/spero:
+          attributes:
+            fund_uid:
+              blank: Please enter your withdrawal address
+              invalid: Invalid withdrawals address, please review.
+              ismine: Please use a new address.
+        withdraws/mxt:
           attributes:
             fund_uid:
               blank: Please enter your withdrawal address
@@ -297,11 +413,32 @@ en:
       doge: DOGE
       pts: PTS
       ltc: LTC
+      spero: SPERO
+      mxt: MXT
   currency:
     satoshi:
       key: BTC
       code: BTC
       name: Bitcoin
+      format: '0,0.00000000'
+    doge:
+      key: DOGE
+      code: DOGE
+      name: Dogecoin
+    ltc:
+      key: LTC
+      code: LTC
+      name: Litecoin
+      format: '0,0.0000'
+    spero:
+      key: SPERO
+      code: SPERO
+      name: Sperocoin
+      format: '0,0.0000'
+    mxt:
+      key: MXT
+      code: MXT
+      name: Martexcoin
       format: '0,0.0000'
     ether:
       key: ETH
@@ -313,10 +450,10 @@ en:
       code: BTSX
       name: BitsharesX
       format: '0,0.0000'
-    renminbi:
+    brl:
       key: BRL
       code: BRL
-      name: Chinese Yuan
+      name: Ral Brasileiro
       format: '0,0.00'
     dogecoin:
       key: DOG
@@ -480,6 +617,34 @@ en:
       latency: 1 confirmation
       transfer: Manual
       go: Deposit
+    doge:
+      key: Block Chain
+      title: Dogecoin Deposits
+      intro: Deposit dogecoin from your own wallet address to SPERO EXCHANGE account
+      latency: 1 confirmation
+      transfer: Manual
+      go: Deposit
+    ltc:
+      key: Block Chain
+      title: Litecoin Deposits
+      intro: Deposit litecoin from your own wallet address to SPERO EXCHANGE account
+      latency: 1 confirmation
+      transfer: Manual
+      go: Deposit
+    spero:
+      key: Block Chain
+      title: Sperocoin Deposits
+      intro: Deposit sperocoin from your own wallet address to SPERO EXCHANGE account
+      latency: 1 confirmation
+      transfer: Manual
+      go: Deposit
+    mxt:
+      key: Block Chain
+      title: Martexcoin Deposits
+      intro: Deposit martexcoin from your own wallet address to SPERO EXCHANGE account
+      latency: 1 confirmation
+      transfer: Manual
+      go: Deposit
   deposits/bank:
     aasm_state:
       submitting: Submitting
@@ -495,6 +660,18 @@ en:
         gen_address:
           require_transaction: it can't generate new address if it hasn't been used.
       ethers:
+        gen_address:
+          require_transaction: it can't generate new address if it hasn't been used.
+      doges:
+        gen_address:
+          require_transaction: it can't generate new address if it hasn't been used.
+      ltcs:
+        gen_address:
+          require_transaction: it can't generate new address if it hasn't been used.
+      speros:
+        gen_address:
+          require_transaction: it can't generate new address if it hasn't been used.
+      mxts:
         gen_address:
           require_transaction: it can't generate new address if it hasn't been used.
       banks:
@@ -615,6 +792,66 @@ en:
         create:
           notice: Withdrawal request successfully submitted. Use the info below to
             complete the bank transfer.
+      doges:
+        destroy:
+          notice: Withdraw been canceled, frozen balance has returned to your account
+        update:
+          notice: Withdraw request is submit successful, we will process it as soon
+            as possible
+          alert_two_factor: Two-Factor Authentication error
+        new:
+          submit: Submit
+          allin: All-In
+          fund_source_label: Label
+          manage_fund_source: Manage Fund Source
+        create:
+          notice: Withdrawal request successfully submitted. Use the info below to
+            complete the bank transfer.
+      ltcs:
+        destroy:
+          notice: Withdraw been canceled, frozen balance has returned to your account
+        update:
+          notice: Withdraw request is submit successful, we will process it as soon
+            as possible
+          alert_two_factor: Two-Factor Authentication error
+        new:
+          submit: Submit
+          allin: All-In
+          fund_source_label: Label
+          manage_fund_source: Manage Fund Source
+        create:
+          notice: Withdrawal request successfully submitted. Use the info below to
+            complete the bank transfer.
+      speros:
+        destroy:
+          notice: Withdraw been canceled, frozen balance has returned to your account
+        update:
+          notice: Withdraw request is submit successful, we will process it as soon
+            as possible
+          alert_two_factor: Two-Factor Authentication error
+        new:
+          submit: Submit
+          allin: All-In
+          fund_source_label: Label
+          manage_fund_source: Manage Fund Source
+        create:
+          notice: Withdrawal request successfully submitted. Use the info below to
+            complete the bank transfer.
+      mxts:
+        destroy:
+          notice: Withdraw been canceled, frozen balance has returned to your account
+        update:
+          notice: Withdraw request is submit successful, we will process it as soon
+            as possible
+          alert_two_factor: Two-Factor Authentication error
+        new:
+          submit: Submit
+          allin: All-In
+          fund_source_label: Label
+          manage_fund_source: Manage Fund Source
+        create:
+          notice: Withdrawal request successfully submitted. Use the info below to
+            complete the bank transfer.
     tickets:
       index:
         new_ticket: New Ticket
@@ -687,13 +924,25 @@ en:
         btc-assets: BTC Assets
         brl-assets: BRL Assets
         eth-assets: ETH Assets
+        doge-assets: DOGE Assets
+        ltc-assets: LTC Assets
+        spero-assets: SPERO Assets
+        mxt-assets: MXT Assets
       liability_tabs:
         verify-btc: Verify My BTC Assets
         verify-brl: Verify My BRL Assets
         verify-eth: Verify My ETH Assets
+        verify-doge: Verify My DOGE Assets
+        verify-ltc: Verify My LTC Assets
+        verify-spero: Verify My SPERO Assets
+        verify-mxt: Verify My MXT Assets
         btc-assets-total: 'Total BTC assets of exchange: '
         brl-assets-total: 'Total BRL assets of exchange: '
         eth-assets-total: 'Total ETH assets of exchange: '
+        doge-assets-total: 'Total DOGE assets of exchange: '
+        ltc-assets-total: 'Total LTC assets of exchange: '
+        spero-assets-total: 'Total SPERO assets of exchange: '
+        mxt-assets-total: 'Total MXT assets of exchange: '
       liability_proof:
         title: Proof of Liabilities
         intro: As an exchange, our liabilities refer to the sum of money (in both
@@ -720,6 +969,26 @@ en:
         intro: All of exchange's ETH assets are listed here.
         total: Total ETH Assets
         address: Address
+      doge_assets:
+        title: DOGE Assets
+        intro: All of exchange's DOGE assets are listed here.
+        total: Total DOGE Assets
+        address: Address
+      ltc_assets:
+        title: LTC Assets
+        intro: All of exchange's LTC assets are listed here.
+        total: Total LTC Assets
+        address: Address
+      spero_assets:
+        title: SPERO Assets
+        intro: All of exchange's SPERO assets are listed here.
+        total: Total SPERO Assets
+        address: Address
+      mxt_assets:
+        title: MXT Assets
+        intro: All of exchange's MXT assets are listed here.
+        total: Total MXT Assets
+        address: Address
       brl_assets:
         title: BRL Assets
         intro: All of exchange's BRL assets are listed here.
@@ -735,6 +1004,10 @@ en:
         brl_format: '0.00'
         btc_format: '0.00000000'
         eth_format: '0.00000000'
+        doge_format: '0.00000000'
+        ltc_format: '0.00000000'
+        spero_format: '0.00000000'
+        mxt_format: '0.00000000'
         reason:
           brl:
             strike_add: Plus
@@ -749,6 +1022,30 @@ en:
             withdraw: Withdraw
             fix: Fix
           eth:
+            strike_add: Plus
+            strike_sub: Sub
+            deposit: Deposit
+            withdraw: Withdraw
+            fix: Fix
+          doge:
+            strike_add: Plus
+            strike_sub: Sub
+            deposit: Deposit
+            withdraw: Withdraw
+            fix: Fix
+          ltc:
+            strike_add: Plus
+            strike_sub: Sub
+            deposit: Deposit
+            withdraw: Withdraw
+            fix: Fix
+          spero:
+            strike_add: Plus
+            strike_sub: Sub
+            deposit: Deposit
+            withdraw: Withdraw
+            fix: Fix
+          mxt:
             strike_add: Plus
             strike_sub: Sub
             deposit: Deposit
@@ -797,6 +1094,10 @@ en:
         all_html: "<i class='fa fa-check'></i><span>All Markets</span>"
         brl_html: "<i class='fa fa-check'></i><span>BRL Markets</span>"
         btc_html: "<i class='fa fa-check'></i><span>BTC Markets</span>"
+        doge_html: "<i class='fa fa-check'></i><span>DOGE Markets</span>"
+        ltc_html: "<i class='fa fa-check'></i><span>LTC Markets</span>"
+        spero_html: "<i class='fa fa-check'></i><span>SPERO Markets</span>"
+        mxt_html: "<i class='fa fa-check'></i><span>MXT Markets</span>"
         price: Price
         change: "24h %"
       range_switch:
@@ -989,6 +1290,10 @@ en:
         brl_format: '0.00'
         btc_format: '0.00000000'
         eth_format: '0.00000000'
+        doge_format: '0.00000000'
+        ltc_format: '0.00000000'
+        spero_format: '0.00000000'
+        mxt_format: '0.00000000'
         total: Total
   guides:
     private:
@@ -1095,6 +1400,18 @@ en:
         satoshi:
           sum: Minimum amount 0.001
           fund_extra: Enter a label for this address (optional)
+        doge:
+          sum: Minimum amount 0.001
+          fund_extra: Enter a label for this address (optional)
+        ltc:
+          sum: Minimum amount 0.001
+          fund_extra: Enter a label for this address (optional)
+        spero:
+          sum: Minimum amount 0.001
+          fund_extra: Enter a label for this address (optional)
+        mxt:
+          sum: Minimum amount 0.001
+          fund_extra: Enter a label for this address (optional)
     hints:
       deposit:
         bank:
@@ -1124,6 +1441,14 @@ en:
           fund_extra: If your bank is no longer in the list, please contact customer
             service
         satoshi:
+          sum: "<a target='_balance' href='#'>Fee structure</a>"
+        doge:
+          sum: "<a target='_balance' href='#'>Fee structure</a>"
+        ltc:
+          sum: "<a target='_balance' href='#'>Fee structure</a>"
+        spero:
+          sum: "<a target='_balance' href='#'>Fee structure</a>"
+        mxt:
           sum: "<a target='_balance' href='#'>Fee structure</a>"
     creating: Creating...
     updating: Updating...
@@ -1174,6 +1499,34 @@ en:
           fund_extra: Label
           account_balance: Account Balance
           member_name: Account
+        doge:
+          fee: Fee
+          sum: Amount
+          fund_uid: Dogecoin Address
+          fund_extra: Label
+          account_balance: Account Balance
+          member_name: Account
+        ltc:
+          fee: Fee
+          sum: Amount
+          fund_uid: Litecoin Address
+          fund_extra: Label
+          account_balance: Account Balance
+          member_name: Account
+        spero:
+          fee: Fee
+          sum: Amount
+          fund_uid: Sperocoin Address
+          fund_extra: Label
+          account_balance: Account Balance
+          member_name: Account
+        mxt:
+          fee: Fee
+          sum: Amount
+          fund_uid: Martexcoin Address
+          fund_extra: Label
+          account_balance: Account Balance
+          member_name: Account
   admin:
     deposits:
       banks:
@@ -1190,6 +1543,30 @@ en:
         update:
           blank_txid: TxID can't be blank
       satoshis:
+        update:
+          notice: The deposit was successful.
+        index:
+          accept: Accept
+          accept_confirm: Confirm deposit?
+      doges:
+        update:
+          notice: The deposit was successful.
+        index:
+          accept: Accept
+          accept_confirm: Confirm deposit?
+      ltcs:
+        update:
+          notice: The deposit was successful.
+        index:
+          accept: Accept
+          accept_confirm: Confirm deposit?
+      speros:
+        update:
+          notice: The deposit was successful.
+        index:
+          accept: Accept
+          accept_confirm: Confirm deposit?
+      mxts:
         update:
           notice: The deposit was successful.
         index:
@@ -1280,7 +1657,79 @@ en:
           succeed_confirm: Process withdrawal?
           reject_confirm: Reject withdrawal?
           withdraw: Withdrawals
+      doges:
+        index:
+          one: Pending withdrawals
+          all: Last 24 hours
+          empty: No data
+        show:
+          process: Accepted
+          succeed: Withdraw
+          reject: Reject
+          succeed_confirm: Process withdrawal?
+          reject_confirm: Reject withdrawal?
+          withdraw: Withdrawals
+      ltcs:
+        index:
+          one: Pending withdrawals
+          all: Last 24 hours
+          empty: No data
+        show:
+          process: Accepted
+          succeed: Withdraw
+          reject: Reject
+          succeed_confirm: Process withdrawal?
+          reject_confirm: Reject withdrawal?
+          withdraw: Withdrawals
+      speros:
+        index:
+          one: Pending withdrawals
+          all: Last 24 hours
+          empty: No data
+        show:
+          process: Accepted
+          succeed: Withdraw
+          reject: Reject
+          succeed_confirm: Process withdrawal?
+          reject_confirm: Reject withdrawal?
+          withdraw: Withdrawals
+      mxts:
+        index:
+          one: Pending withdrawals
+          all: Last 24 hours
+          empty: No data
+        show:
+          process: Accepted
+          succeed: Withdraw
+          reject: Reject
+          succeed_confirm: Process withdrawal?
+          reject_confirm: Reject withdrawal?
+          withdraw: Withdrawals
   deposits/satoshi:
+    aasm_state:
+      submitted: Submitted
+      accepted: Accepted
+      checked: Checked
+      warning: Warning
+  deposits/doge:
+    aasm_state:
+      submitted: Submitted
+      accepted: Accepted
+      checked: Checked
+      warning: Warning
+  deposits/ltc:
+    aasm_state:
+      submitted: Submitted
+      accepted: Accepted
+      checked: Checked
+      warning: Warning
+  deposits/spero:
+    aasm_state:
+      submitted: Submitted
+      accepted: Accepted
+      checked: Checked
+      warning: Warning
+  deposits/mxt:
     aasm_state:
       submitted: Submitted
       accepted: Accepted
@@ -1351,6 +1800,38 @@ en:
       member_name: Member
       state_and_actions: State/Actions
       currency_obj_key_text: Currency
+    doge:
+      amount: Amount
+      txid: TxId
+      created_at: Created At
+      confirmations: Confirmations
+      member_name: Member
+      state_and_actions: State/Actions
+      currency_obj_key_text: Currency
+    ltc:
+      amount: Amount
+      txid: TxId
+      created_at: Created At
+      confirmations: Confirmations
+      member_name: Member
+      state_and_actions: State/Actions
+      currency_obj_key_text: Currency
+    spero:
+      amount: Amount
+      txid: TxId
+      created_at: Created At
+      confirmations: Confirmations
+      member_name: Member
+      state_and_actions: State/Actions
+      currency_obj_key_text: Currency
+    mxt:
+      amount: Amount
+      txid: TxId
+      created_at: Created At
+      confirmations: Confirmations
+      member_name: Member
+      state_and_actions: State/Actions
+      currency_obj_key_text: Currency
     bank:
       sn: SN
       amount: Amount
@@ -1383,6 +1864,10 @@ en:
       brl: BRL
       btc: BTC
       eth: ETH
+      doge: DOGE
+      ltc: LTC
+      spero: SPERO
+      mxt: MXT
     order:
       state:
         done: DONE
@@ -1410,6 +1895,10 @@ en:
     fund_source:
       category:
         satoshi: Bitcoin
+        doge: Dogecoin
+        ltc: Litecoin
+        spero: Sperocoin
+        mxt: Martexcoin
         bank: Bank
     id_document:
       id_document_type:
@@ -1885,6 +2374,34 @@ en:
       latency: 30 minutes
       transfer: Manual
       go: Withdraw
+    doge:
+      key: Blockchain
+      title: Dogecoin Blockchain
+      intro: Withdraw Dogecoin to your own Dogecoin wallet
+      latency: 30 minutes
+      transfer: Manual
+      go: Withdraw
+    ltc:
+      key: Blockchain
+      title: Litecoin Blockchain
+      intro: Withdraw Litecoin to your own Litecoin wallet
+      latency: 30 minutes
+      transfer: Manual
+      go: Withdraw
+    spero:
+      key: Blockchain
+      title: Sperocoin Blockchain
+      intro: Withdraw Sperocoin to your own Sperocoin wallet
+      latency: 30 minutes
+      transfer: Manual
+      go: Withdraw
+    mxt:
+      key: Blockchain
+      title: Martexcoin Blockchain
+      intro: Withdraw Martexcoin to your own Martexcoin wallet
+      latency: 30 minutes
+      transfer: Manual
+      go: Withdraw
   withdraws:
     invalid_address: is not valid. You can not withdraw to this address.
   withdraws/bank:
@@ -1897,9 +2414,57 @@ en:
       processing: Processing
       done: Done
       almost_done: Almost Done
-      canceled: Canceld
+      canceled: Canceled
       failed: Failed
   withdraws/satoshi:
+    aasm_state:
+      submitting: Submitting
+      submitted: Submitted
+      rejected: Rejected
+      accepted: Accepted
+      suspect: Suspect
+      processing: processing
+      done: Done
+      almost_done: Almost Done
+      canceled: Cancelled
+      failed: Failed
+  withdraws/doge:
+    aasm_state:
+      submitting: Submitting
+      submitted: Submitted
+      rejected: Rejected
+      accepted: Accepted
+      suspect: Suspect
+      processing: processing
+      done: Done
+      almost_done: Almost Done
+      canceled: Cancelled
+      failed: Failed
+  withdraws/ltc:
+    aasm_state:
+      submitting: Submitting
+      submitted: Submitted
+      rejected: Rejected
+      accepted: Accepted
+      suspect: Suspect
+      processing: processing
+      done: Done
+      almost_done: Almost Done
+      canceled: Cancelled
+      failed: Failed
+  withdraws/spero:
+    aasm_state:
+      submitting: Submitting
+      submitted: Submitted
+      rejected: Rejected
+      accepted: Accepted
+      suspect: Suspect
+      processing: processing
+      done: Done
+      almost_done: Almost Done
+      canceled: Cancelled
+      failed: Failed
+  withdraws/mxt:
     aasm_state:
       submitting: Submitting
       submitted: Submitted

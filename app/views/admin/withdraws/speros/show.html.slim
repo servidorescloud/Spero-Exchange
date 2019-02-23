@@ -1,0 +1,30 @@
+.row
+  .col-xs-12
+    .panel.panel-primary
+      .panel-heading
+        span = t('.withdraw', sn: @spero.id)
+      .panel-body
+        = description_for :withdraw do
+          = item_for @spero, :id
+          = item_for @spero, :created_at
+          = item_for @spero, :aasm_state_text
+          hr.split
+          = item_for @spero.member, :name
+          = item_for @spero, :fund_extra
+          = item_for @spero, :fund_uid do
+            span = @spero.fund_uid.truncate(22)
+          = item_for @spero, :amount
+          hr.split
+          = item_for @spero, :remark
+          hr.split
+          ul.list-inline.pull-right
+            - if @spero.may_reject?
+              li
+                = link_to t('.reject'), url_for([:admin, @spero]), class: 'btn btn-danger', method: 'DELETE', confirm: t('.reject_confirm')
+            - if @spero.may_process?
+              li
+                = link_to t('.process'), url_for([:admin, @spero]), class: 'btn btn-primary', method: 'PATCH'
+
+  .col-xs-12
+    = render partial: 'shared/admin/member', locals: {member: @spero.member}
+    = render partial: 'shared/admin/account', locals: {account: @spero.account}

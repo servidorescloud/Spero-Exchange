@@ -42,6 +42,10 @@ en:
       currency_name:
         brl: BRL
         btc: BTC
+        doge: DOGE
+        ltc: LTC
+        spero: SPERO
+        mxt: MXT
       deposit_brl:
         title: Depósito em Reais Brasileiros
         desc: "ATENÇÃO! ESTE PAINEL É DE USO APENAS PARA USUÁRIOS BRASILEIROS. Para depositar via transferência bancária, siga estas etapas:"
@@ -66,12 +70,24 @@ en:
       deposit_btc:
         title: BTC Deposit
 
+      deposit_doge:
+        title: DOGE Deposit
+
+      deposit_ltc:
+        title: LTC Deposit
+
+      deposit_spero:
+        title: SPERO Deposit
+
+      deposit_mxt:
+        title: MXT Deposit
+
       deposit_coin:
         address: Address
         new_address: New Address
         confirm_gen_new_address: You sure want to generate a new deposit address?
         open-wallet: Please use your common wallet services, local wallet, mobile terminal or online wallet, select a payment and send.
-        detail: Please paste the address blow in your wallet, and fill in the amount you want to deposit, then confirm and send.
+        detail: Please paste the address below in your wallet, and fill in the amount you want to deposit, then confirm and send.
         scan-qr: Scanning QR code to Pay for In the mobile terminal wallet.
         after_deposit: Once you complete sending, you can check the status of your new deposit below.
         generate-new: Generate new address
@@ -115,6 +131,18 @@ en:
       withdraw_btc:
         title: BTC Withdraw
 
+      withdraw_doge:
+        title: DOGE Withdraw
+
+      withdraw_ltc:
+        title: LTC Withdraw
+
+      withdraw_spero:
+        title: SPERO Withdraw
+
+      withdraw_mxt:
+        title: MXT Withdraw
+
       withdraw_coin:
         intro: Please fill in the address and amount, then submit the form. It will be confirmed in 10 minutes
         label: Label
@@ -149,7 +177,7 @@ en:
         coin_done: Coin Done
         done: Done
         almost_done: Almost Done
-        canceled: Canceld
+        canceled: Canceled
         failed: Failed
 
     auth:
@@ -169,4 +197,8 @@ en:
         all: All Market
         brl: BRL Market
         btc: BTC Market
+        doge: DOGE Market
+        ltc: LTC Market
+        spero: SPERO Market
+        mxt: MXT Market
 
