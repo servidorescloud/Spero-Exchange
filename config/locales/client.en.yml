@@ -40,28 +40,28 @@ en:
       deposit: Deposit
       withdraw: Withdraw
       currency_name:
-        cny: CNY
+        brl: BRL
         btc: BTC
-      deposit_cny:
-        title: Chinese Yuan Deposit
-        desc: "To deposit via Bank transfer, please follow these steps:"
-        desc_item_1: "1. Submit the form to get the identification code."
-        desc_item_2: "2. Transfer the money to exchange's bank account. Please make sure your referral code was written on the form you fill in."
-        desc_item_3: "3. Your deposit will be confirmed as soon as the money is received."
-        attention: "Attention: The name of your bank account must be the same as your account name on our site, otherwise your deposit may fail."
-        from: From
-        to: To
-        deposit_name: Your Name
-        deposit_account: Deposit Account
+      deposit_brl:
+        title: Depósito em Reais Brasileiros
+        desc: "ATENÇÃO! ESTE PAINEL É DE USO APENAS PARA USUÁRIOS BRASILEITROS. Para depositar via transferência bancária, siga estas etapas:"
+        desc_item_1: "1. Envie o formulário para obter o código de identificação."
+        desc_item_2: "2. Transfira o dinheiro para a conta bancária da SPERO EXCHANGE. Certifique-se de que seu código de referência foi escrito no formulário que você preencheu."
+        desc_item_3: "3. Seu depósito será confirmado assim que o dinheiro for recebido."
+        attention: "Atenção: O nome da sua conta bancária deve ser o mesmo que o nome da sua conta no nosso site, caso contrário, o seu depósito poderá falhar."
+        from: De
+        to: Para
+        deposit_name: Seu Nome
+        deposit_account: Conta de Depósito
         add: Add
-        manage: Manage
-        amount: Deposit Amount
-        min_amount: At least 10 yuan
-        to_account: Account
-        to_name: Name
-        to_bank_name: Bank Name
-        opening_bank_name: Account where created
-        remark: 'Referral Code (Transfer identification code)'
+        manage: Gerenciar
+        amount: Valor do Depósito
+        min_amount: Pelo menos 50 Reais
+        to_account: Conta
+        to_name: Nome
+        to_bank_name: Nome do Banco
+        opening_bank_name: Conta onde foi criado
+        remark: 'Código de Referência (Código de Identificação da Transferência)'
 
       deposit_btc:
         title: BTC Deposit
@@ -98,19 +98,19 @@ en:
         warning: Warning
         suspect: Suspect
 
-      withdraw_cny:
-        title: Chinese Yuan Withdraw
-        intro: Select the bank to cash withdrawal amount and enter the account number and complete submission.
-        intro_2: Your bank account and name must be consistent with the real-name authentication name.
-        attention: "Working Hours: 9:00 - 18:00"
-        account_name: Account Name
-        withdraw_address: Withdraw Address
-        balance: Balance
-        withdraw_amount: Withdraw Amount
-        manage_withdraw: Manage Withdraw
-        fee_explain: About Fee
-        min: At least
-        withdraw_all: Withdraw all
+      withdraw_brl:
+        title: Saques em Reais Brasileiros
+        intro: ATENÇÃO! ESTE PAINEL É DE USO APENAS PARA USUÁRIOS BRASILEITROS. Selecione o banco para onde deseja sacar, insira o número da agência e conta, em seguida complete a solicitação.
+        intro_2: Sua conta bancária e nome devem ser os mesmos do nome da autenticação de nome real.
+        attention: "Horas de trabalho: 10:00 - 16:00"
+        account_name: Nome da conta
+        withdraw_address: Endereço de Saque
+        balance: Saldo
+        withdraw_amount: Retirar Montante
+        manage_withdraw: Gerenciar Retirada
+        fee_explain: Sobre as taxas
+        min: Pelo Menos
+        withdraw_all: Retirar tudo
 
       withdraw_btc:
         title: BTC Withdraw
@@ -167,6 +167,6 @@ en:
     markets:
       market_list:
         all: All Market
-        cny: CNY Market
+        brl: BRL Market
         btc: BTC Market
 
