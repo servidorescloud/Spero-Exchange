@@ -4,11 +4,11 @@ require 'mina/git'
 require 'mina/rbenv'
 require 'mina/slack/tasks'
 
-set :repository, 'https://github.com/peatio/peatio.git'
-set :user, 'deploy'
-set :deploy_to, '/home/deploy/peatio'
-set :branch, 'master'
-set :domain, 'demo.peatio.com'
+set :repository, 'https://github.com/algobasket/PeatioCryptoExchange'
+set :user, 'spero'
+set :deploy_to, '/home/spero/peatio'
+set :branch, 'rebuild-peatio'
+set :domain, 'exchange.sperocoin.org'
 
 set :shared_paths, [
   'config/database.yml',

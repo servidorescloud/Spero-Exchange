@@ -760,7 +760,10 @@ en:
         total: Total
         withdraw_history: Withdrawal History
       create:
+        amount_empty_error: Amount is empty.
         two_factors_error: Two factor authentication failed.
+        unverified_withdraw_limit_error: 'Unverified account single withdraw limit exceeded > %{limit}. Please, perform account verification procedure.'
+        unverified_withdraw_day_limit_error: 'Unverified account day withdraw limit exceeded > %{limit}. Please, perform account verification procedure.'
       banks:
         update:
           notice: Bank Transfer withdrawal application has been submitted, we will

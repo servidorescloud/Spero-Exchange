@@ -3,7 +3,8 @@ module Private
     class BaseController < ::Private::BaseController
       layout 'app'
       before_action :channel
-      before_action :auth_activated!
+      # we do not need a fully verified account here
+      # before_action :auth_verified!
       before_action :auth_verified!
 
       def channel

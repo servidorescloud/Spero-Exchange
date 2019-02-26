@@ -233,7 +233,7 @@ class Withdraw < ActiveRecord::Base
   end
 
   def sync_update
-    ::Pusher["private-#{member.sn}"].trigger_async('withdraws', { type: 'update', id: self.id, attributes: self.changes_attributes_as_json })
+    ::Pusher["private-#{member.sn}"].trigger_async('withdraws', { type: 'update', id: self.id, attributes: self.as_json })
   end
 
   def sync_create
