@@ -607,6 +607,8 @@ header {
 
     td.price {
       .fill { color: #333; }
+      .satoshi { color: #777; } /*2EB5DD*/
+      .satoshi-hide { color: #333; } /*2E4582*/
     }
 
     td.change {
