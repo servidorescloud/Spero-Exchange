@@ -3,22 +3,20 @@ module Private
     skip_before_action :auth_member!, only: [:index]
 
     def index
-      @btc_proof   = Proof.current :btc
-      @doge_proof   = Proof.current :doge
-      @ltc_proof   = Proof.current :ltc
-      @eth_proof   = Proof.current :eth
-      @spero_proof   = Proof.current :spero
-      @mxt_proof   = Proof.current :mxt
-      #proof
+      @proofs = {}
+      @accounts = {}
+      @currencies = []
 
-      if current_user
-        @btc_account = current_user.accounts.with_currency(:btc).first
-        @doge_account = current_user.accounts.with_currency(:doge).first
-        @ltc_account = current_user.accounts.with_currency(:ltc).first
-        @eth_account = current_user.accounts.with_currency(:eth).first
-        @spero_account = current_user.accounts.with_currency(:spero).first
-        @mxt_account = current_user.accounts.with_currency(:mxt).first
-        #account
+      Currency.all.sort_by(&:code).map do |currency|
+        code = currency.code.to_sym
+        @proofs[currency.code] = Proof.current code
+        @currencies.push ({
+            code: currency.code,
+            coin: currency.coin?
+        })
+        if current_user
+          @accounts[currency.code] = current_user.accounts.with_currency(code).first
+        end
       end
     end
 
