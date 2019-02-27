@@ -1009,6 +1009,7 @@ en:
       partial_tree:
         success: 'Success! Verification data generated at: %{timestamp}'
     funds:
+      show_all: Show all
       show:
         account_history: Account History
         brl_format: '0.00'
