@@ -148,6 +148,10 @@ class Withdraw < ActiveRecord::Base
     end
   end
 
+  def send_coins!
+    AMQPQueue.enqueue(:withdraw_coin, id: id) if coin?
+  end
+
   private
 
   def after_cancel
@@ -196,10 +200,6 @@ class Withdraw < ActiveRecord::Base
                                               balance: account.balance)
 
     AMQPQueue.enqueue(:sms_notification, phone: member.phone_number, message: sms_message)
-  end
-
-  def send_coins!
-    AMQPQueue.enqueue(:withdraw_coin, id: id) if coin?
   end
 
   def ensure_account_balance

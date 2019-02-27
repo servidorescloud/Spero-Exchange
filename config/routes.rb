@@ -48,6 +48,8 @@ Peatio::Application.routes.draw do
   scope module: :private do
     resource  :id_document, only: [:edit, :update]
 
+    resources :two_factor_signin, only: [:show, :update, :edit, :destroy]
+
     resources :settings, only: [:index]
     resources :api_tokens do
       member do
@@ -81,11 +83,11 @@ Peatio::Application.routes.draw do
 
     resources :account_versions, :only => :index
 
-    resources :exchange_assets, :controller => 'assets' do
-      member do
-        get :partial_tree
-      end
-    end
+#    resources :exchange_assets, :controller => 'assets' do
+#      member do
+#        get :partial_tree
+#      end
+#    end
 
     get '/history/orders' => 'history#orders', as: :order_history
     get '/history/trades' => 'history#trades', as: :trade_history
