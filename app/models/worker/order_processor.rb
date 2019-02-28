@@ -5,7 +5,7 @@ module Worker
       create_cancel_thread
       @is_pump = true
       @price = 10.0/1000000000.0;
-      create_test_thread
+      # create_test_thread
     end
 
     def process(payload, metadata, delivery_info)

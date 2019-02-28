@@ -147,9 +147,21 @@ class Account < ActiveRecord::Base
     return unless member
 
     json = Jbuilder.encode do |json|
-     json.(self, :balance, :locked, :currency, :is_online, :blocks, :headers, :blocktime, :spero_discount)
+     json.(self, :balance, :locked, :currency, :is_online, :blocks, :headers, :blocktime, :spero_discount, :coin_home, :coin_btt, :coin_be)
     end
     member.trigger('account', json)
+  end
+
+  def coin_home
+    currency_obj.home
+  end
+
+   def coin_btt
+    currency_obj.btt
+  end
+
+   def coin_be
+    currency_obj.be
   end
 
   def is_online
@@ -192,12 +204,15 @@ class Account < ActiveRecord::Base
       # check if there is a useable address, but don't touch it to create the address now.
       "deposit_address" => payment_addresses.empty? ? "" : payment_address.deposit_address,
       "name_text" => currency_obj.name_text,
-      "default_withdraw_fund_source" => default_withdraw_fund_source,
+      "default_withdraw_fund_source_id" => default_withdraw_fund_source_id,
       "is_online" => currency_obj.is_online,
       "blocks" => currency_obj.blocks,
       "headers" => currency_obj.headers,
       "blocktime" => currency_obj.blocktime,
-      "spero_discount" => member.has_spero_deposite_50
+      "spero_discount" => member.has_spero_deposite_50,
+      "coin_home" => currency_obj.home,
+      "coin_btt" => currency_obj.btt,
+      "coin_be" => currency_obj.be
     })
   end
 

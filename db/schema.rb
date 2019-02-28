@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150405053726) do
+ActiveRecord::Schema.define(version: 20180403183855) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -437,6 +437,7 @@ ActiveRecord::Schema.define(version: 20150405053726) do
     t.boolean  "activated"
     t.string   "type"
     t.datetime "refreshed_at"
+    t.integer  "require_signin"
   end
 
   create_table "versions", force: true do |t|
@@ -455,8 +456,8 @@ ActiveRecord::Schema.define(version: 20150405053726) do
     t.integer  "account_id"
     t.integer  "member_id"
     t.integer  "currency"
-    t.decimal  "amount",     precision: 32, scale: 16
-    t.decimal  "fee",        precision: 32, scale: 16
+    t.decimal  "amount",      precision: 32, scale: 16
+    t.decimal  "fee",         precision: 32, scale: 16
     t.string   "fund_uid"
     t.string   "fund_extra"
     t.datetime "created_at"
@@ -464,8 +465,9 @@ ActiveRecord::Schema.define(version: 20150405053726) do
     t.datetime "done_at"
     t.string   "txid"
     t.string   "aasm_state"
-    t.decimal  "sum",        precision: 32, scale: 16, default: 0.0, null: false
+    t.decimal  "sum",         precision: 32, scale: 16, default: 0.0, null: false
     t.string   "type"
+    t.string   "explanation"
   end
 
 end

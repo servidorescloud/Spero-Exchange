@@ -773,8 +773,8 @@ en:
         unverified_withdraw_day_limit_error: 'Unverified account day withdraw limit exceeded > %{limit}. Please, perform account verification procedure.'
       banks:
         update:
-          notice: Bank Transfer withdrawal application has been submitted, we will
-            process it as soon as possible
+          notice: Withdraw request is submit successful, we will process it as soon
+            as possible
           alert_two_factor: Two-Factor Authentication error
         destroy:
           notice: Bank Transfer withdraw has been cancelled, frozen amount has been
@@ -1112,7 +1112,7 @@ en:
         spero_html: "<i class='fa fa-check'></i><span>SPERO Markets</span>"
         mxt_html: "<i class='fa fa-check'></i><span>MXT Markets</span>"
         price: Price
-        change: "24h %"
+        change: "24h"
       range_switch:
         switch_1: 1m
         switch_5: 5m
@@ -1228,7 +1228,7 @@ en:
         safety_instruction: In order to protect your bitcoins and personal information, we strongly suggest that you use Two-Factor Authentication.
         reset_password: Rest your Password
         reauthenticate: Authentication
-        activated: E-mail with verification link has been sent to your mailbox, please check as soon as possible.
+        activated: A e-mail with verification link has been sent to your mailbox, please check as soon as possible.
           If you do not received it, please click "Send it again" button.
         auth-activated: Please confirm your email address first.
         auth-verified: Please verify your account first.
@@ -1338,7 +1338,7 @@ en:
         panel: Account Verification
         info: Why this so impotant?
         new:
-          title: Submit account verification information
+          title: Submit real-name authentication information
           intro: In line with the national laws , identity verification is required.
             please verify your account to proceed.
     panels:
@@ -1455,7 +1455,7 @@ en:
       withdraw:
         bank:
           member_name: "<span class='text-danger'>Withdraw bank account name must
-            match your name used for account verification</span>"
+            match your name used for real-name authentication</span>"
           sum: "<a target='_balance' href='#'>Fee structure</a>"
           fund_extra: If your bank is no longer in the list, please contact customer
             service
@@ -1558,6 +1558,7 @@ en:
           deposit: Deposit Request
           accept: Accept
           target_deposit: Wire Transfer
+          accept_confirm: Confirm deposit?
           confirm: Confirm recharge?
         update:
           blank_txid: TxID can't be blank

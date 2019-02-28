@@ -495,9 +495,12 @@ chat_tabs_wrapper {
 
   table.asks, table.bids {
     font-size: 12px;
+    font-weight: bold;
 
     td.price {
        .fill { color: #333; }
+       .satoshi { color: #777; } /*2EB5DD*/
+       .satoshi-hide { color: #333; } /*2E4582*/
       }
 
     .new {
@@ -578,6 +581,8 @@ chat_tabs_wrapper {
 
     td.price {
        .fill { color: #333; }
+       .satoshi { color: #777; } /*2EB5DD*/
+       .satoshi-hide { color: #333; } /*2E4582*/
       }
   }
 
@@ -621,6 +626,8 @@ chat_tabs_wrapper {
 
       td.price {
         .fill { color: #333; }
+        .satoshi { color: #777; } /*2EB5DD*/
+        .satoshi-hide { color: #333; } /*2E4582*/
     }
 
       td.change {

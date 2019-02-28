@@ -51,12 +51,12 @@ $ ->
 
   MyOrdersUI.attachTo('#my_orders')
   MarketTickerUI.attachTo('#ticker')
-  MarketSwitchUI.attachTo('#market_list_wrapper')
+#  MarketSwitchUI.attachTo('#market_list_wrapper')
   MarketTradesUI.attachTo('#market_trades_wrapper')
 
   MarketData.attachTo(document)
   GlobalData.attachTo(document, {pusher: window.pusher})
-  MemberData.attachTo(document, {pusher: window.pusher}) if gon.accounts
+  MarketSwitchUI.attachTo('#market_list_wrapper')
 
   CandlestickUI.attachTo('#candlestick')
   SwitchUI.attachTo('#range_switch, #indicator_switch, #main_indicator_switch, #type_switch, #legend_indicator_switch')

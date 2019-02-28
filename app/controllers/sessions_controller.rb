@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
 
   before_action :auth_member!, only: :destroy
   before_action :auth_anybody!, only: [:new, :failure]
+  before_action :add_auth_for_weibo
 
   helper_method :require_captcha?
 
@@ -16,7 +17,6 @@ class SessionsController < ApplicationController
     is_exists = Member.is_exists(auth_hash)  
     if !is_exists # signup process
       if !simple_captcha_valid?
-        Identity.delete(Identity.where(email: auth_hash['info']['email']).first.id)
         redirect_to signup_path, alert: t('.invalid_captcha')
         return
       end
@@ -42,8 +42,6 @@ class SessionsController < ApplicationController
         save_session_key @member.id, cookies['_peatio_session']
         save_signup_history @member.id
         MemberMailer.notify_signin(@member.id).deliver if @member.activated?
-        # redirect_back_or_settings_page
-        redirect_to market_path(Market.first)
 
         if not current_user.two_factors.activated?
           redirect_to settings_path, alert: t('two_factors.auth.please_active_two_factor')
@@ -58,17 +56,19 @@ class SessionsController < ApplicationController
       end
     else
       increase_failed_logins
-      redirect_to signin_path, alert: t('.error')
-    end
-  end
 
-  def failure
     increase_failed_logins
       if !is_valid
         redirect_to signin_path, alert: t('.invalid_captcha')
       else
         redirect_to signin_path, alert: t('.error')
       end
+  end
+end
+
+  def failure
+    increase_failed_logins
+    redirect_to signin_path, alert: t('.error')
   end
 
   def destroy
@@ -103,7 +103,11 @@ class SessionsController < ApplicationController
     @auth_hash ||= env["omniauth.auth"]
   end
 
-
+  def add_auth_for_weibo
+    if current_user && ENV['WEIBO_AUTH'] == "true" && auth_hash.try(:[], :provider) == 'weibo'
+      redirect_to settings_path, notice: t('.weibo_bind_success') if current_user.add_auth(auth_hash)
+    end
+  end
 
   def save_signup_history(member_id)
     SignupHistory.create(

@@ -86,16 +86,19 @@
   @allIn = (event)->
     switch @panelType()
       when 'ask'
-        @trigger 'place_order::input::price', {price: @getLastPrice()}
+#        @trigger 'place_order::input::price', {price: @getLastPrice()}
         @trigger 'place_order::input::volume', {volume: @getBalance()}
       when 'bid'
-        @trigger 'place_order::input::price', {price: @getLastPrice()}
+#        @trigger 'place_order::input::price', {price: @getLastPrice()}
         @trigger 'place_order::input::total', {total: @getBalance()}
 
   @refreshBalance = (event, data) ->
+
     type = @panelType()
     currency = gon.market[type].currency
     balance = gon.accounts[currency]?.balance || 0
+#    locked = gon.accounts[currency]?.locked || 0
+#    balance = balance - locked
 
     @select('currentBalanceSel').data('balance', balance)
     @select('currentBalanceSel').text(formatter.fix(type, balance))
@@ -110,7 +113,7 @@
     order[@usedInput] = 0 unless order[@usedInput]
     available = formatter.fix type, @getBalance().minus(order[@usedInput])
 
-    if @select('priceSel').val() != 0.0
+    if @select('priceSel').val() != 0.0 && @select('priceSel').val() != ''
       @select('feeLabelSel').hide().text(formatter.fixPriceGroup(order.fee)).fadeIn()
       @select('feeLabelInfo').hide().text(formatter.round(order.fee_actual_percent, 2) + "%").fadeIn()
     else

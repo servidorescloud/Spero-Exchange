@@ -1,6 +1,7 @@
 @HeaderUI = flight.component ->
   @attributes
     vol: 'span.vol'
+    vol2: 'span.vol2'
     amount: 'span.amount'
     high: 'span.high'
     low: 'span.low'
