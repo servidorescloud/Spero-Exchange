@@ -53,7 +53,7 @@ class Global
   end
 
   def default_ticker
-    {low: ZERO, high: ZERO, last: ZERO, volume: ZERO}
+    {low: ZERO, high: ZERO, last: ZERO, volume: ZERO, volume2: ZERO}
   end
 
   def ticker
@@ -74,6 +74,12 @@ class Global
   def h24_volume
     Rails.cache.fetch key('h24_volume', 5), expires_in: 24.hours do
       Trade.with_currency(currency).h24.sum(:volume) || ZERO
+    end
+  end
+
+def h24_volume2
+    Rails.cache.fetch key('h24_volume2', 5), expires_in: 24.hours do
+      Trade.with_currency(currency).h24.sum('volume * price') || ZERO
     end
   end
 
