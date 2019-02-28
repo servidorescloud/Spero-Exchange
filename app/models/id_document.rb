@@ -45,6 +45,13 @@ before_update :verify_bill_type
     #Rails.logger.info self.to_json
   end
 
+  def is_verified?
+    if self.aasm_state == 'verified'
+      return true
+    end
+    return false
+  end
+
   def send_mail_rejected
     MemberMailer.auth_rejected(member.id).deliver
   end
