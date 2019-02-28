@@ -147,9 +147,29 @@ class Account < ActiveRecord::Base
     return unless member
 
     json = Jbuilder.encode do |json|
-     json.(self, :balance, :locked, :currency, :is_online, :blocks, :headers, :blocktime)
+     json.(self, :balance, :locked, :currency, :is_online, :blocks, :headers, :blocktime, :spero_discount)
     end
     member.trigger('account', json)
+  end
+
+  def is_online
+    currency_obj.is_online
+  end
+
+   def blocks
+    currency_obj.blocks
+  end
+
+   def headers
+    currency_obj.headers
+  end
+
+   def blocktime
+    currency_obj.blocktime
+  end
+
+   def spero_discount
+    member.has_spero_deposite_50
   end
 
   def change_balance_and_locked(delta_b, delta_l)
@@ -176,14 +196,15 @@ class Account < ActiveRecord::Base
       "is_online" => currency_obj.is_online,
       "blocks" => currency_obj.blocks,
       "headers" => currency_obj.headers,
-      "blocktime" => currency_obj.blocktime
+      "blocktime" => currency_obj.blocktime,
+      "spero_discount" => member.has_spero_deposite_50
     })
   end
 
   private
 
   def sync_update
-    ::Pusher["private-#{member.sn}"].trigger_async('accounts', { type: 'update', id: self.id, attributes: {balance: balance, locked: locked} })
+    ::Pusher["private-#{member.sn}"].trigger_async('accounts', { type: 'update', id: self.id, attributes: {balance: balance, locked: locked, spero_discount: member.has_spero_deposite_50} })
   end
 
 end

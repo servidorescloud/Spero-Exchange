@@ -44,7 +44,12 @@ class Order < ActiveRecord::Base
    if member.has_fee_free
      return 0
    end
-    config[kind.to_sym]["fee"]
+   if member.has_spero_deposite_50
+     @local_fee = config[kind.to_sym]["fee"] / 2.0
+     return (@local_fee*100000000.0).round / 100000000.0
+   end
+
+    return config[kind.to_sym]["fee"]
   end
 
   def config
@@ -91,6 +96,8 @@ class Order < ActiveRecord::Base
     expect_account.plus_funds \
       real_add, fee: real_fee,
       reason: Account::STRIKE_ADD, ref: trade
+
+    Rails.logger.info "[trade]: " + "real_fee = " + real_fee.to_s + " fee = " + fee.to_s + " real_add = " + add.to_s + " real_sub = " + real_sub.to_s
 
     self.volume         -= trade.volume
     self.locked         -= real_sub

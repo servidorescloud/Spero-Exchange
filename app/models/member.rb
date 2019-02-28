@@ -111,6 +111,16 @@ class Member < ActiveRecord::Base
     return false
   end
 
+  def has_spero_deposite_50
+    @spero_account = self.accounts.with_currency(:spero).first
+    if @spero_account
+      if @spero_account.balance > 5
+        return true
+      end
+    end
+    return false
+  end
+
   def create_auth_for_identity(identity)
     self.authentications.create(provider: 'identity', uid: identity.id)
   end
