@@ -109,7 +109,7 @@
         volume = volume.minus(diff)
         subtotal = memo.plus(BigNumber(num[0]).minus(diff).times(BigNumber(num[1])))
         done = true
-
+      
 #      console.log "Return = " + (subtotal).toF(9)
       return subtotal
 
@@ -125,6 +125,10 @@
 
   @placeOrder = (target, data) ->
     @trigger target, 'place_order::order::total', data
+
+  @placeOtherOrder = (target, data) ->
+    @trigger target, 'place_order::input::price', data
+    @trigger target, 'place_order::input::volume', data
 
   @getBalance = (type) ->
     if type == 'bid'
@@ -144,8 +148,12 @@
     @on document, 'place_order::balance::change::bid', @onBidBalanceChange
     @on document, 'place_order::balance::change::ask', @onAskBalanceChange
 
-    @balance_ask = gon.accounts[gon.market.ask.currency]?.balance || 0
-    @balance_bid = gon.accounts[gon.market.bid.currency]?.balance || 0
+    if gon.accounts != undefined && gon.market.ask != undefined && gon.market.bid != undefined
+      @balance_ask = gon.accounts[gon.market.ask.currency]?.balance || 0
+      @balance_bid = gon.accounts[gon.market.bid.currency]?.balance || 0
+    else
+      @balance_ask = 0
+      @balance_bid = 0
 
     @on @select('fade_toggle_depth'), 'click', =>
       @trigger 'market::depth::fade_toggle'
@@ -153,9 +161,9 @@
     $('.asks').on 'click', 'tr', (e) =>
       i = $(e.target).closest('tr').data('order')
       @placeOrder $('#bid_entry'), _.extend(@computeDeep(e, gon.asks, 'bid'), type: 'ask')
-      @placeOrder $('#ask_entry'), {price: BigNumber(gon.asks[i][0]), volume: BigNumber(gon.asks[i][1]), total: BigNumber(gon.asks[i][0]).times BigNumber(gon.asks[i][1])}
+      @placeOtherOrder $('#ask_entry'), {price: BigNumber(gon.asks[i][0]), volume: BigNumber(gon.asks[i][1]), total: BigNumber(gon.asks[i][0]).times BigNumber(gon.asks[i][1])}
 
     $('.bids').on 'click', 'tr', (e) =>
       i = $(e.target).closest('tr').data('order')
-      @placeOrder $('#ask_entry'), _.extend(@computeDeep(e, gon.bids, 'ask'), type: 'bid')
+      @placeOtherOrder $('#ask_entry'), _.extend(@computeDeep(e, gon.bids, 'ask'), type: 'bid')
       @placeOrder $('#bid_entry'), {price: BigNumber(gon.bids[i][0]), volume: BigNumber(gon.bids[i][1]), total:  BigNumber(gon.bids[i][0]).times BigNumber(gon.bids[i][1])}
