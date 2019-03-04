@@ -147,7 +147,7 @@ class Account < ActiveRecord::Base
     return unless member
 
     json = Jbuilder.encode do |json|
-     json.(self, :balance, :locked, :currency, :is_online, :blocks, :headers, :blocktime, :spero_discount, :coin_home, :coin_btt, :coin_be)
+      json.(self, :balance, :locked, :currency, :is_online, :blocks, :headers, :blocktime, :spero_discount, :coin_home, :coin_btt, :coin_be)
     end
     member.trigger('account', json)
   end
