@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180403183855) do
+ActiveRecord::Schema.define(version: 20180412000356) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -105,6 +105,15 @@ ActiveRecord::Schema.define(version: 20180403183855) do
     t.text     "content"
     t.integer  "author_id"
     t.integer  "ticket_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "currencies_summary", force: true do |t|
+    t.string   "currency"
+    t.decimal  "locked",     precision: 32, scale: 16
+    t.decimal  "balance",    precision: 32, scale: 16
+    t.decimal  "hot",        precision: 32, scale: 16
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -429,6 +438,16 @@ ActiveRecord::Schema.define(version: 20180403183855) do
   add_index "trades", ["bid_member_id"], name: "index_trades_on_bid_member_id", using: :btree
   add_index "trades", ["created_at"], name: "index_trades_on_created_at", using: :btree
   add_index "trades", ["currency"], name: "index_trades_on_currency", using: :btree
+
+  create_table "turnover_summary", force: true do |t|
+    t.decimal  "btc",        precision: 32, scale: 16
+    t.decimal  "ltc",        precision: 32, scale: 16
+    t.decimal  "doge",       precision: 32, scale: 16
+    t.decimal  "spero",      precision: 32, scale: 16
+    t.decimal  "mxt",        precision: 32, scale: 16
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "two_factors", force: true do |t|
     t.integer  "member_id"
