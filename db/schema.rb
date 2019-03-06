@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180413201515) do
+ActiveRecord::Schema.define(version: 20180413201517) do
 
   create_table "account_versions", force: true do |t|
     t.integer  "member_id"
@@ -116,7 +116,11 @@ ActiveRecord::Schema.define(version: 20180413201515) do
     t.decimal  "hot",        precision: 32, scale: 16
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "slice"
   end
+
+  add_index "currencies_summary", ["created_at"], name: "index_currencies_summary_on_created_at", using: :btree
+  add_index "currencies_summary", ["slice"], name: "index_currencies_summary_on_slice", using: :btree
 
   create_table "deposits", force: true do |t|
     t.integer  "account_id"
@@ -447,7 +451,11 @@ ActiveRecord::Schema.define(version: 20180413201515) do
     t.decimal  "mxt",        precision: 32, scale: 16
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "slice"
   end
+
+  add_index "turnover_summary", ["created_at"], name: "index_turnover_summary_on_created_at", using: :btree
+  add_index "turnover_summary", ["slice"], name: "index_turnover_summary_on_slice", using: :btree
 
   create_table "two_factors", force: true do |t|
     t.integer  "member_id"
