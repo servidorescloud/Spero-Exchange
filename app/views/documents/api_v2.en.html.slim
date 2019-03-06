@@ -67,7 +67,7 @@
 
     p Now we hav a signed request which can be used like this:
     pre: code
-      | curl -X GET 'https://peatio.com/api/v2/markets?access_key=xxx&foo=bar&tonce=123456789&signature=e324059be4491ed8e528aa7b8735af1e96547fbec96db962d51feb7bf1b64dee'
+      | curl -X GET 'https://exchange.sperocoin.org/api/v2/markets?access_key=xxx&foo=bar&tonce=123456789&signature=e324059be4491ed8e528aa7b8735af1e96547fbec96db962d51feb7bf1b64dee'
 
 .panel.panel-default
   .panel-heading
@@ -101,7 +101,7 @@
         tr
           td Member
           td: pre: code
-            | {"sn":"PEA5TFFOGQHTIO","name":"foo","email":"foo@peatio.dev","activated":true,"accounts":[{"currency":"brl","balance":"100243840.0","locked":"0.0"},{"currency":"btc","balance":"99999708.26","locked":"210.8"}]}
+            | {"sn":"PEA5TFFOGQHTIO","name":"foo","email":"foo@peatio.dev","activated":true,"accounts":[{"currency":"brl","balance":"1002.0","locked":"0.0"},{"currency":"btc","balance":"8.26","locked":"0.8"}]}
           td
             p sn: Unique identifier of user
             p name: User name
@@ -111,7 +111,7 @@
         tr
           td Account
           td: pre: code
-            | {"currency":"brl","balance":"100243840.0","locked":"0.0"}
+            | {"currency":"brl","balance":"10.0","locked":"0.0"}
           td
             p currency: Account type, like 'btc' or 'brl'
             p balance: Account balance, exclude locked funds
@@ -154,13 +154,74 @@
     h3 Some Examples
 
   .panel-body
-    p Buy 1BTC at price 4000BRL:
+    p Buy 1BTC at price 10000BRL:
     pre: code
-      | curl -X POST 'https://peatio.com/api/v2/orders' -d 'access_key=your_access_key&tonce=1234567&signature=computed_signature&market=btcbrl&price=4000&side=buy&volume=1'
+      | curl -X POST 'https://exchange.sperocoin.org/api/v2/orders' -d 'access_key=your_access_key&tonce=1234567&signature=computed_signature&market=btcbrl&price=10000&side=buy&volume=1'
 
     p Create multiple orders with a single request:
     pre: code
-      | curl -X POST 'https://peatio.com/api/v2/orders/multi' -d 'access_key=your_access_key&tonce=123456789&signature=computed_signature&market=btcbrl&orders[][price]=4000&orders[][side]=sell&orders[][volume]=0.5&orders[][price]=3999&orders[][side]=sell&orders[][volume]=0.99'
+      | curl -X POST 'https://exchange.sperocoin.org/api/v2/orders/multi' -d 'access_key=your_access_key&tonce=123456789&signature=computed_signature&market=btcusd&orders[][price]=10000&orders[][side]=sell&orders[][volume]=0.5&orders[][price]=3999&orders[][side]=sell&orders[][volume]=0.99'
+
+    p Python script with markets and put order sample:
+    pre: code
+      | import hashlib
+        import hmac
+        import urllib2
+        import urllib
+        import time
+        import ssl
+
+         access_key = '00000000000000000000000000'
+        secret_key = '00000000000000000000000000'
+
+        # 0. making ssl context - verify should be turned off
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+
+        # ------------------
+        # Get markets list
+        # ------------------
+
+        # 1. list markets
+        epoch_time = str(int(time.time())) + '000'
+        request = 'access_key=' + access_key + '&tonce=' + epoch_time
+        message = 'GET|/api/v2/markets|' + request
+
+        # 1.1 generate the hash.
+        signature = hmac.new(
+            secret_key,
+            message,
+            hashlib.sha256
+        ).hexdigest()
+
+        # 1.2 list markets
+        query = 'https://exchange.sperocoin.org/api/v2/markets?' + request + '&signature=' + signature
+        content = urllib2.urlopen(query, context=ctx).read()
+        print(content)
+
+        # ------------------
+        # Put sell order
+        # ------------------
+
+        # 2. put order
+        epoch_time = str(int(time.time())) + '001' # tonce should be different from previous one
+
+        request = 'access_key=' + access_key + '&market=giobtc&price=0.000000042&side=sell' + '&tonce=' + epoch_time + '&volume=100.0'
+        message = 'POST|/api/v2/orders|' + request
+
+        # 2.1 generate the hash.
+        signature = hmac.new(
+            secret_key,
+            message,
+            hashlib.sha256
+        ).hexdigest()
+
+        # 2.2 put order
+        query = 'https://exchange.sperocoin.org/api/v2/orders?' + request
+        result = urllib2.Request(query, urllib.urlencode({'signature' : signature})) #there is a trick - we need a POST request, thats why urlencode used
+        content = urllib2.urlopen(result, context=ctx).read()
+        print(content)
 
 .panel.panel-default
   .panel-heading
