@@ -55,11 +55,11 @@ class Currency < ActiveYamlBase
     "peatio:hotwallet:#{code}:blocks"
   end
 
-   def headers_count_cache_key
+  def headers_count_cache_key
     "peatio:hotwallet:#{code}:headers"
   end
 
-   def blocktime_cache_key
+  def blocktime_cache_key
     "peatio:hotwallet:#{code}:blocktime"
   end
 
@@ -71,15 +71,15 @@ class Currency < ActiveYamlBase
     Rails.cache.read(blocks_count_cache_key) || 0
   end
 
-   def headers
+  def headers
     Rails.cache.read(headers_count_cache_key) || 0
   end
 
-   def blocktime
+  def blocktime
     Rails.cache.read(blocktime_cache_key) || Time.at(1).to_datetime.strftime("%Y-%m-%d %H:%M:%S")
   end
 
-   def is_online
+  def is_online
     Rails.cache.read(is_online_cache_key) || "offline"
   end
 
@@ -100,22 +100,22 @@ class Currency < ActiveYamlBase
       Rails.cache.write(is_online_cache_key, "offline")
     end
 
-     if @local_status
+    if @local_status
       Rails.logger.info @local_status
 
       if !@last_blocks
         @last_blocks = 0
       end
 
-       if !@local_time
+      if !@local_time
         @local_time = 0
       end 
 
-       if @local_status[:mediantime] > 0
+      if @local_status[:mediantime] > 0
         @local_time = @local_status[:mediantime]
       end
 
-       if @local_status[:mediantime] == 0 && @local_status[:blocks] > @last_blocks
+      if @local_status[:mediantime] == 0 && @local_status[:blocks] > @last_blocks
         @last_blocks = @local_status[:blocks]
         @local_time = Time.now.to_i
       end
