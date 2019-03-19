@@ -12,7 +12,7 @@
           = item_for @spero.member, :name
           = item_for @spero, :fund_extra
           = item_for @spero, :fund_uid do
-            span = @spero.fund_uid.truncate(22)
+            span = @spero.fund_uid.truncate(40)
           = item_for @spero, :amount
           hr.split
           = item_for @spero, :remark
