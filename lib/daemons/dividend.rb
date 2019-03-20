@@ -34,8 +34,8 @@ while($running) do
           prev_div = nil
           if dividend.intraday_dividends.first
             prev_div = dividend.intraday_dividends.first.current
-           end
-           IntradayDividend.create(:dividend_id => dividend.id, :current => (account.balance/product.amount).to_i, :previous => prev_div, :profit => hourly_dividend);
+          end
+          IntradayDividend.create(:dividend_id => dividend.id, :current => account.balance, :previous => prev_div, :profit => hourly_dividend);
          end
 
           #$stdout.print member[:email] + "\n"

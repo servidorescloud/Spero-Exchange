@@ -117,7 +117,7 @@ class Member < ActiveRecord::Base
     self.dividend.save!
   end
 
-   def checked_in?
+  def checked_in?
 
     #touch product
     default_product
@@ -129,16 +129,16 @@ class Member < ActiveRecord::Base
     return value
   end
 
-   def check_in
+  def check_in
     Rails.cache.write(member_checked_in_key, true)
   end
 
-   def check_out
+  def check_out
     Rails.cache.write(member_checked_in_key, false)
   end
 
   def has_spero_deposite_50
-    if dividend.is_accepted
+    if dividend != nil and dividend.is_accepted
       return false
     end
 

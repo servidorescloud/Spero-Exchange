@@ -19,6 +19,8 @@ echo -e "${BLUE}PASSO 04/05 - REINICIANDO DAEMONS..."
 #Daemons
 # stop
 clear
+echo -e "${RED}PARANDO DAEMON: ${NC}dividend..."
+bundle exec rake daemon:dividend:stop
 echo -e "${RED}PARANDO DAEMON: ${NC}matching..."
 bundle exec rake daemon:matching:stop
 echo -e "${RED}PARANDO DAEMON: ${NC} withdraw_coin..."
@@ -59,6 +61,8 @@ bundle exec rake DEPOSIT_COIN=5 daemon:deposit_coin:stop
 echo -e "${YELLOW}INICIANDO ${NC}DEPOSIT_COIN=5..."
 bundle exec rake DEPOSIT_COIN=5 daemon:deposit_coin:start
 
+echo -e "${YELLOW}INICIANDO DAEMON: ${NC} dividend..."
+bundle exec rake daemon:dividend:start
 echo -e "${YELLOW}INICIANDO DAEMON: ${NC} matching..."
 bundle exec rake daemon:matching:start
 echo -e "${YELLOW}INICIANDO DAEMON: ${NC} withdraw_coin..."
