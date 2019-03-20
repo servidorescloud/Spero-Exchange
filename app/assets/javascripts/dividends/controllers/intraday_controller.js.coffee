@@ -2,13 +2,13 @@ app.controller 'IntradayController', ($scope, $stateParams, $http) ->
   ctrl = @
   @list = gon.intraday_list
 
-   @noRecords = ->
+  @noRecords = ->
     @list.length == 0
 
-   @refresh = ->
+  @refresh = ->
     @list = gon.intraday_list
     $scope.$apply()
 
-   do @event = ->
+  do @event = ->
     Dividend.bind "create update destroy", ->
       ctrl.refresh()

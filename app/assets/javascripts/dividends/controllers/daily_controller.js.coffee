@@ -2,13 +2,13 @@ app.controller 'DailyController', ($scope, $stateParams, $http) ->
   ctrl = @
   @list = gon.daily_list
 
-   @noRecords = ->
+  @noRecords = ->
     @list.length == 0
 
-   @refresh = ->
+  @refresh = ->
     @list = gon.daily_list
     $scope.$apply()
 
-   do @event = ->
+  do @event = ->
     Dividend.bind "create update destroy", ->
       ctrl.refresh()
