@@ -17,11 +17,11 @@ app.directive 'accounts', ->
       $scope.accounts = Account.select (item) ->
         return (parseFloat(item.balance) + parseFloat(item.locked) > 0.0000000001)
 
-       if $scope.accounts.length == 0
+      if $scope.accounts.length == 0
         $scope.accounts = Account.all()
         @initial_state = true
 
-       $('input[name="showall-checkbox"]').bootstrapSwitch
+      $('input[name="showall-checkbox"]').bootstrapSwitch
         labelText: 'Empty'
         state: @initial_state
         handleWidth: 70

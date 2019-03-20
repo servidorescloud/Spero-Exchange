@@ -166,11 +166,11 @@ class Account < ActiveRecord::Base
     currency_obj.home
   end
 
-   def coin_btt
+  def coin_btt
     currency_obj.btt
   end
 
-   def coin_be
+  def coin_be
     currency_obj.be
   end
 
@@ -178,19 +178,19 @@ class Account < ActiveRecord::Base
     currency_obj.is_online
   end
 
-   def blocks
+  def blocks
     currency_obj.blocks
   end
 
-   def headers
+  def headers
     currency_obj.headers
   end
 
-   def blocktime
+  def blocktime
     currency_obj.blocktime
   end
 
-   def spero_discount
+  def spero_discount
     member.has_spero_deposite_50
   end
 

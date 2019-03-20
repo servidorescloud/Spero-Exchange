@@ -11,11 +11,11 @@ class Comment < ActiveRecord::Base
     self.content.sub("[pending]", "")
   end
 
-   def admin_content
+  def admin_content
     self.content
   end
 
-   def is_pending
+  def is_pending
     if self.content.include? "[pending]"
       return true
     end

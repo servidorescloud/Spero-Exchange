@@ -104,7 +104,7 @@ app.controller 'WithdrawsController', ['$scope', '$stateParams', '$http', '$gon'
       $.publish "two_factor_init"
     , 100)
 
-   do @event = ->
+  do @event = ->
     Account.bind "create update destroy", ->
       $scope.balance = $scope.account.balance
       $scope.$digest()

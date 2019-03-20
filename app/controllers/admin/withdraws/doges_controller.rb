@@ -3,21 +3,21 @@ module Admin
     class DogesController < ::Admin::Withdraws::BaseController
       load_and_authorize_resource :class => '::Withdraws::Doge'
 
-       def index
+      def index
         start_at = DateTime.now.ago(60 * 60 * 24 * 3)
         @one_doges = @doges.with_aasm_state(:almost_done).order("id DESC")
         @all_doges = @doges.without_aasm_state(:almost_done).where('created_at > ?', start_at).order("id DESC")
       end
 
-       def show
+      def show
       end
 
-       def update
+      def update
         @doge.process!
         redirect_to :back, notice: t('.notice')
       end
 
-       def destroy
+      def destroy
         @doge.reject!
         redirect_to :back, notice: t('.notice')
       end

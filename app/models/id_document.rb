@@ -58,7 +58,7 @@ before_update :verify_bill_type
     MemberMailer.auth_rejected(member.id).deliver
   end
 
-   def send_mail_approved
+  def send_mail_approved
     MemberMailer.auth_approved(member.id).deliver
   end
 

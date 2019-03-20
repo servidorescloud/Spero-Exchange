@@ -54,7 +54,7 @@ class TwoFactor < ActiveRecord::Base
     update require_signin: 1
   end
 
-   def reset_require_signin
+  def reset_require_signin
     update require_signin: 0
   end
 

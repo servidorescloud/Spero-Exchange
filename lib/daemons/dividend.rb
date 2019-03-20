@@ -1,21 +1,21 @@
 #!/usr/bin/env ruby
 
- ENV["RAILS_ENV"] ||= "development"
+ENV["RAILS_ENV"] ||= "development"
 
- root = File.expand_path(File.dirname(__FILE__))
+root = File.expand_path(File.dirname(__FILE__))
 root = File.dirname(root) until File.exists?(File.join(root, 'config'))
 Dir.chdir(root)
 
- require File.join(root, "config", "environment")
+require File.join(root, "config", "environment")
 
- $running = true
+$running = true
 Signal.trap("TERM") do
   $running = false
 end
 
- prev = Time.new
+prev = Time.new
 
- while($running) do
+while($running) do
   t = Time.now
   if prev.hour != t.hour
   #if prev.min != t.min
@@ -23,17 +23,17 @@ end
     Product.all.each do |product|
       $stdout.print "hour process product " + product[:name] + "\n"
       product.dividends.each do |dividend|
-         $stdout.print "hour process dividend for member " + dividend[:member_id].to_s + "\n"
-         #member = Member.find_by_id dividend[:member_id]
-         #gio_account = member.accounts.with_currency(:gio).first
-         account = dividend.asset
-         if account
-           #$stdout.print "test " + product.amount.to_s + "\n"
-           hourly_dividend = (account.balance/product.amount).to_i * product.rate
-           $stdout.print "hour result " + hourly_dividend.to_s + "\n"
-           prev_div = nil
-           if dividend.intraday_dividends.first
-             prev_div = dividend.intraday_dividends.first.current
+        $stdout.print "hour process dividend for member " + dividend[:member_id].to_s + "\n"
+        #member = Member.find_by_id dividend[:member_id]
+        #spero_account = member.accounts.with_currency(:spero).first
+        account = dividend.asset
+        if account
+          #$stdout.print "test " + product.amount.to_s + "\n"
+          hourly_dividend = (account.balance/product.amount).to_i * product.rate
+          $stdout.print "hour result " + hourly_dividend.to_s + "\n"
+          prev_div = nil
+          if dividend.intraday_dividends.first
+            prev_div = dividend.intraday_dividends.first.current
            end
            IntradayDividend.create(:dividend_id => dividend.id, :current => (account.balance/product.amount).to_i, :previous => prev_div, :profit => hourly_dividend);
          end

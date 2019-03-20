@@ -132,7 +132,7 @@ class Withdraw < ActiveRecord::Base
     self.txid
   end
 
-   def remark
+  def remark
     self.explanation
   end
 

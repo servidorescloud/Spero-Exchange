@@ -2,7 +2,7 @@ module Private
   class DividendsController < BaseController
     layout 'dividends'
 
-     before_action :auth_activated!
+    before_action :auth_activated!
     before_action :two_factor_activated!
 
      def index
@@ -15,10 +15,10 @@ module Private
       @intraday_list = current_user.dividend.intraday_list
       @daily_list = current_user.dividend.daily_list
 
-       gon.jbuilder
+      gon.jbuilder
     end
 
-     def accept_agreement
+    def accept_agreement
       begin
         current_user.dividend.accept!
       rescue => ex
@@ -28,16 +28,16 @@ module Private
       render nothing: true
     end
 
-     def revoke_agreement
+    def revoke_agreement
       begin
         current_user.dividend.revoke!
       rescue => ex
         render :json => { :errors => ex.message }, :status => 403
         return
-      end  
+      end
     render nothing: true
     end
 
-   end
+  end
 end
 

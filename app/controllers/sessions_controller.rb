@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
       end
     end
 
-     is_valid = true
+    is_valid = true
     if require_captcha? && is_exists
       is_valid = simple_captcha_valid?
     end

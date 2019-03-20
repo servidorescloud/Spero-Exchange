@@ -106,7 +106,7 @@ class CoinRPC
       result
     end
 
-     def http_post_request(post_body)
+    def http_post_request(post_body)
       http    = Net::HTTP.new(@uri.host, @uri.port)
       request = Net::HTTP::Post.new(@uri.request_uri)
       request.basic_auth @uri.user, @uri.password
@@ -127,7 +127,7 @@ class CoinRPC
       @newaddress = handle("getnewaddress", name)
     end
 
-     def getblockchaininfo
+    def getblockchaininfo
       @getinfo = getinfo()
       {
         blocks: Integer(@getinfo[:blocks]),
@@ -136,7 +136,7 @@ class CoinRPC
       }
     end
 
-     def safe_getbalance
+    def safe_getbalance
       begin
         getbalance
       rescue
@@ -154,11 +154,11 @@ class CoinRPC
       raise JSONRPCError, resp['error'] if resp['error']
       result = resp['result']
 
-       result.symbolize_keys! if result.is_a? Hash
+      result.symbolize_keys! if result.is_a? Hash
       result
     end
 
-     def http_post_request(post_body)
+    def http_post_request(post_body)
       http    = Net::HTTP.new(@uri.host, @uri.port)
       request = Net::HTTP::Post.new(@uri.request_uri)
       request.basic_auth @uri.user, @uri.password
@@ -180,7 +180,7 @@ class CoinRPC
       @newaddress = handle("getnewaddress", "")
     end
 
-     def getblockchaininfo
+    def getblockchaininfo
       @getinfo = getinfo()
       {
         blocks: Integer(@getinfo[:blocks]),
@@ -189,7 +189,7 @@ class CoinRPC
       }
     end
 
-     def safe_getbalance
+    def safe_getbalance
       begin
         getbalance
       rescue

@@ -3,16 +3,16 @@ module Private
     before_action :auth_activated!
     before_action :two_factor_activated!
 
-     def index
+    def index
     end
 
-     def new
+    def new
     end
 
-     def create
+    def create
     end
 
-     def show
+    def show
       # enable
       if two_factor_locked?(expired_at: 1)
         session[:return_to] = request.original_url
@@ -23,7 +23,7 @@ module Private
       end
     end
 
-     def edit
+    def edit
       # disable
       if two_factor_locked?(expired_at: 1)
         session[:return_to] = request.original_url
@@ -34,13 +34,13 @@ module Private
       end
     end
 
-     def update
+    def update
     end
 
-     def destroy
+    def destroy
     end
 
-     def unbind
+    def unbind
     end
 
    end

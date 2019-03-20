@@ -32,7 +32,7 @@ class MemberMailer < BaseMailer
     set_mail(member_id)
   end
 
-   def auth_approved(member_id)
+  def auth_approved(member_id)
     set_mail(member_id)
   end
 

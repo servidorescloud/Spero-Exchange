@@ -17,7 +17,7 @@ end
 while($running) do
   Currency.all.each do |currency|
     begin
-      $stdout.print "Processing coin = " + currency.code + " (" 
+      $stdout.print "Processing coin = " + currency.code + " ("
       currency.refresh_balance if currency.coin?
       currency.refresh_status if currency.coin?
       if currency.is_online == "online" 

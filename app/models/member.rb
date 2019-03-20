@@ -112,7 +112,7 @@ class Member < ActiveRecord::Base
       return dividend
     end
 
-     product = Product.where(name: 'default').first
+    product = Product.where(name: 'default').first
     self.dividend = Dividend.create(member_id: id, product_id: product.id)
     self.dividend.save!
   end

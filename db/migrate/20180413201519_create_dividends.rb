@@ -30,9 +30,9 @@ class CreateDividends < ActiveRecord::Migration
       t.timestamps
     end
 
-     add_index :intraday_dividends, [:dividend_id, :created_at]
+    add_index :intraday_dividends, [:dividend_id, :created_at]
     add_index :daily_dividends, [:dividend_id, :created_at]
 
-     Product.create :name => "default", :description => "GIO/BTC/60/24", :asset => 1, :interest => 2, :maturation => 60, :amount => 1000.0, :rate => 0.000000001369
+    Product.create :name => "default", :description => "SPERO/BTC/60/24", :asset => 1, :interest => 2, :maturation => 60, :amount => 1000.0, :rate => 0.000000001369
   end
 end
