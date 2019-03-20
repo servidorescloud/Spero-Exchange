@@ -16,6 +16,8 @@ class Member < ActiveRecord::Base
 
   has_one :id_document
 
+  has_one :dividend
+
   has_many :authentications, dependent: :destroy
 
   scope :enabled, -> { where(disabled: false) }
@@ -32,7 +34,7 @@ class Member < ActiveRecord::Base
   validates :email, email: true, uniqueness: true, allow_nil: true
 
   before_create :build_default_id_document
-  after_create  :touch_accounts
+  after_create :touch_accounts
   after_update :resend_activation
   after_update :sync_update
 
@@ -105,8 +107,22 @@ class Member < ActiveRecord::Base
     "spero:member:#{id}:checked_in"
   end
 
+  def default_product
+    if dividend.present?
+      return dividend
+    end
+
+     product = Product.where(name: 'default').first
+    self.dividend = Dividend.create(member_id: id, product_id: product.id)
+    self.dividend.save!
+  end
+
    def checked_in?
-    value = true 
+
+    #touch product
+    default_product
+
+    value = true
     if two_factors.require_signin?
       value = Rails.cache.read(member_checked_in_key) || false
     end
@@ -121,22 +137,27 @@ class Member < ActiveRecord::Base
     Rails.cache.write(member_checked_in_key, false)
   end
 
+  def has_spero_deposite_50
+    if dividend.is_accepted
+      return false
+    end
+
+    @spero_account = self.accounts.with_currency(:spero).first
+    if @spero_account
+      if @spero_account.balance >= 5
+        return true
+      end
+    end
+    return false
+  end
+
   def has_fee_free
     if self.state == 1
       #Rails.logger.info "HAS fee for " + self.email
       return true
     end
     #Rails.logger.info "NO fee for " + self.email
-    return false
-  end
 
-  def has_spero_deposite_50
-    @spero_account = self.accounts.with_currency(:spero).first
-    if @spero_account
-      if @spero_account.balance > 5
-        return true
-      end
-    end
     return false
   end
 
