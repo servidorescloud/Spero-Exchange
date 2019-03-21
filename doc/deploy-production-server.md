@@ -81,6 +81,10 @@ Please follow instructions here: https://www.rabbitmq.com/install-debian.html
     chmod +x rabbitmqadmin
     sudo mv rabbitmqadmin /usr/local/sbin
 
+    rabbitmqctl add_user deploy *****
+    rabbitmqctl set_user_tags deploy administrator
+    rabbitmqctl set_permissions -p / deploy ".*" ".*" ".*"
+
 ### 6. Install Bitcoind
 
     sudo add-apt-repository ppa:bitcoin/bitcoin
