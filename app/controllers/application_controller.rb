@@ -129,6 +129,7 @@ class ApplicationController < ActionController::Base
     gon.markets_column = 'name'
     gon.markets_column_order = 'asc'
     gon.markets_unit = 'volume'
+    gon.markets_pinned = 'true'
 
     if params[:controller] == 'private/markets'
       if params[:markets] != nil 
@@ -136,6 +137,10 @@ class ApplicationController < ActionController::Base
         gon.markets_column = params[:column]
         gon.markets_column_order = params[:order]
         gon.markets_unit = params[:unit]
+      end
+
+      if params[:pinned] != nil
+        gon.markets_pinned = params[:pinned]
       end
     end
 
