@@ -453,7 +453,7 @@ en:
     brl:
       key: BRL
       code: BRL
-      name: Ral Brasileiro
+      name: Real Brasileiro
       format: '0,0.00'
     dogecoin:
       key: DOG

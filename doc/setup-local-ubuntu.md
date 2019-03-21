@@ -139,7 +139,7 @@ A JavaScript Runtime is needed for Asset Pipeline to work. Any runtime will do b
 
 **Clone the project**
 
-    git clone git@github.com:InfraexDev/peatio.git
+    git clone https://github.com/DigitalCoin1/Spero-Exchange.git
     cd peatio
     bundle install
 

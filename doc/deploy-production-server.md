@@ -81,10 +81,6 @@ Please follow instructions here: https://www.rabbitmq.com/install-debian.html
     chmod +x rabbitmqadmin
     sudo mv rabbitmqadmin /usr/local/sbin
 
-    rabbitmqctl add_user deploy *****
-    rabbitmqctl set_user_tags deploy administrator
-    rabbitmqctl set_permissions -p / deploy ".*" ".*" ".*"
-
 ### 6. Install Bitcoind
 
     sudo add-apt-repository ppa:bitcoin/bitcoin
@@ -178,11 +174,15 @@ A JavaScript Runtime is needed for Asset Pipeline to work. Any runtime will do b
     echo "export RAILS_ENV=production" >> ~/.bashrc
     source ~/.bashrc
 
+### 11. Install Ghostscrip
+
+    sudo apt-get install ghostscript
+
 ##### Clone the Source
 
     mkdir -p ~/peatio
     cd peatio
-    git clone https://github.com/algobasket/PeatioCryptoExchange.git .
+    git clone https://github.com/DigitalCoin1/Spero-Exchange.git
 
 
     ＃ Install dependency gems

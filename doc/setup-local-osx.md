@@ -107,7 +107,7 @@ Peatio uses Capybara with PhantomJS to do the feature tests, so if you want to r
 
 **Clone the project**
 
-    git clone git://github.com/InfraexDev/peatio.git
+    git clone https://github.com/DigitalCoin1/Spero-Exchange.git
     cd peatio
     bundle install
 
