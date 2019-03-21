@@ -51,7 +51,7 @@ bundle exec rake daemon:currencies_stats:stop
 echo -e "${RED}PARANDO ${NC}TRADE_EXECUTOR=5..."
 bundle exec rake TRADE_EXECUTOR=5 daemon:trade_executor:stop
 echo -e "${RED}PARANDO ${NC}DEPOSIT_COIN_ADDRESS=4..."
-bundle exec rake DEPOSIT_COIN_ADDRESS=4 daemon:deposit_coin_address:stop
+bundle exec rake DEPOSIT_COIN_ADDRESS=8 daemon:deposit_coin_address:stop
 echo -e "${RED}PARANDO ${NC}ORDER_PROCESSOR=5..."
 bundle exec rake ORDER_PROCESSOR=5 daemon:order_processor:stop
 
@@ -93,7 +93,7 @@ bundle exec rake daemon:currencies_stats:start
 echo -e "${YELLOW}INICIANDO ${NC}TRADE_EXECUTOR=5..."
 bundle exec rake TRADE_EXECUTOR=5 daemon:trade_executor:start
 echo -e "${YELLOW}INICIANDO ${NC}DEPOSIT_COIN_ADDRESS=4..."
-bundle exec rake DEPOSIT_COIN_ADDRESS=4 daemon:deposit_coin_address:start
+bundle exec rake DEPOSIT_COIN_ADDRESS=8 daemon:deposit_coin_address:start
 echo -e "${YELLOW}INICIANDO ${NC}ORDER_PROCESSOR=5..."
 bundle exec rake ORDER_PROCESSOR=5 daemon:order_processor:start
 #Passo 05
