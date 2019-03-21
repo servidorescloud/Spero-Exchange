@@ -10,7 +10,7 @@ class CreateDividends < ActiveRecord::Migration
       t.decimal :rate, :precision => 32, :scale => 16
       t.text    :contract
       t.timestamps
-    end    
+    end
     create_table :dividends do |t|
       t.integer :member_id
       t.integer :product_id
