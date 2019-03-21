@@ -1180,10 +1180,10 @@ en:
         volume: Volume
       header:
         network: Connection State
-        vol: 24h Volume
-        high: High
-        low: Low
-        change: Change
+        vol: 24h(V)
+        high: Hi
+        low: Lo
+        change: Ch
       settings:
         sound: Sound
         notification: Notify

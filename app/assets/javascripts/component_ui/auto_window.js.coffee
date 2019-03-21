@@ -1,5 +1,6 @@
 GUTTER = 2 # linkage to market.css.scss $gutter var
 PANEL_TABLE_HEADER_HIGH = 37
+PANEL_MARKETS_SEARCH_HIGH = 42
 PANEL_PADDING = 8
 BORDER_WIDTH = 1
 ORDER_BOOK_MIN_HEIGHT = 214
@@ -26,6 +27,7 @@ TOTAL_MIN_WIDTH_PINNED = 1664
     gutter_8x = GUTTER * 8
     gutter_9x = GUTTER * 9
     panel_table_header_high = PANEL_TABLE_HEADER_HIGH
+    panel_markets_search_high = PANEL_MARKETS_SEARCH_HIGH
     order_book_min_height = ORDER_BOOK_MIN_HEIGHT
     candlestick_min_width = CANDLESTICK_MIN_WIDTH
     candlestick_min_height = CANDLESTICK_MIN_HEIGHT
@@ -126,13 +128,18 @@ TOTAL_MIN_WIDTH_PINNED = 1664
         if window.innerHeight >= total_min_height_split
           $('#candlestick').css("min-height", candlestick_min_height)
 
-          $('.entry-right').css("left", $('#my_orders').position().left)
-          $('.entry-right').css("top", order_h + ticker_h + depths_h + my_orders_h + gutter_7x)
-
-          $('.entry-left').css("left", $('#my_orders').position().left + gutter_2x + $('.entry-right').width())
+#          $('.entry-left').css("left", $('#my_orders').position().left + gutter_2x + $('.entry-right').width())
+          $('.entry-left').css("left", "")
+          $('.entry-left').css("right", 2)
           $('.entry-left').css("top", order_h + ticker_h + depths_h + my_orders_h + gutter_7x)
 
-          $('#my_orders_wrapper').find(".dropdown-wrapper").css("bottom", 204)
+#          $('.entry-right').css("left", $('#my_orders').position().left)
+          $('.entry-right').css("left", "")
+          $('.entry-right').css("right", $('.entry-left').width() + gutter_2x + 2)
+          $('.entry-right').css("top", order_h + ticker_h + depths_h + my_orders_h + gutter_7x)
+
+#          $('#my_orders_wrapper').find(".dropdown-wrapper").css("bottom", 204)
+          $('#my_orders_wrapper').find(".dropdown-wrapper").css("top", $('#depths_wrapper').position().top + $('#depths_wrapper').height() + gutter_2x)
 
       # ---------------
       # Post processing
@@ -142,11 +149,14 @@ TOTAL_MIN_WIDTH_PINNED = 1664
         if !need_rearrange
           window_h_syntetic = navbar_h + $('#candlestick').height() + gutter_3x
 
-        markets_h = (window_h_syntetic - navbar_h) / 2 
+        markets_h = (window_h_syntetic - navbar_h) / 2
+        markets_inner_h = markets_h - (panel_table_header_high + panel_markets_search_high)
         $('#market_list').css("min-height", markets_h)
+        $('#market_list').height(markets_h)
         $('#market_list').find(".panel-default").css("min-height", markets_h)
         $('#market_list').find(".panel-default").height(markets_h)
-        $('#market_list').height(markets_h)
+        $('#market_list').find(".panel-body-content").css("min-height", markets_inner_h)
+        $('#market_list').find(".panel-body-content").height(markets_inner_h-16)
         markets_h = $('#market_list').height() + 2*BORDER_WIDTH
 
         trades_h = window_h_syntetic - navbar_h - markets_h - gutter_2x - 2*BORDER_WIDTH
