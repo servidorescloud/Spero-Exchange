@@ -3,7 +3,7 @@ module Private
     class BaseController < ::Private::BaseController
       before_action :channel
       before_action :auth_activated!
-      # we do not need a fully verified account here
+      # mainly we do not need a fully verified user for that
       # before_action :auth_verified!
       before_action :two_factor_activated!
 

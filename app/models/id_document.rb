@@ -19,7 +19,7 @@ class IdDocument < ActiveRecord::Base
 
   alias_attribute :full_name, :name
 
-before_update :verify_bill_type
+  before_update :verify_bill_type
 
   paginates_per 15
 

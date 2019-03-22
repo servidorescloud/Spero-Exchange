@@ -111,7 +111,7 @@ class Member < ActiveRecord::Base
     if dividend.present?
       return dividend
     end
- # binding.pry   
+    # binding.pry 
     product = Product.where(name: 'default').first
     if !product.nil?
       self.dividend = Dividend.create(member_id: id, product_id: product.id)

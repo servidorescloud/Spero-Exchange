@@ -27,8 +27,8 @@ class SessionsController < ApplicationController
     if require_captcha? && is_exists
       is_valid = simple_captcha_valid?
     end
-
-     if is_valid
+ 
+    if is_valid
       @member = Member.from_auth(auth_hash)
     end
 
@@ -44,7 +44,7 @@ class SessionsController < ApplicationController
         save_signup_history @member.id
         MemberMailer.notify_signin(@member.id).deliver if @member.activated?
 
-          current_user.check_out #reset check-out
+        current_user.check_out #reset check-out
 
         if not current_user.two_factors.activated?
           redirect_to settings_path, alert: t('two_factors.auth.please_active_two_factor')
@@ -60,15 +60,13 @@ class SessionsController < ApplicationController
       end
     else
       increase_failed_logins
-
-    increase_failed_logins
       if !is_valid
         redirect_to signin_path, alert: t('.invalid_captcha')
       else
         redirect_to signin_path, alert: t('.error')
       end
+    end
   end
-end
 
   def failure
     increase_failed_logins

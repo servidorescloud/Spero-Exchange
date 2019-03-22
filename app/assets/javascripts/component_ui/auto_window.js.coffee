@@ -116,7 +116,6 @@ TOTAL_MIN_WIDTH_PINNED = 1664
       if need_rearrange # window.innerWidth <= total_min_width || window.innerHeight < total_min_height_split || (window.innerHeight >= total_min_height_split && window.innerHeight < total_min_height && window.innerWidth > total_min_width)
         $('#candlestick').css("min-height", candlestick_min_height_split)
         $('#candlestick').css("height", $('#candlestick').height() - $('.entry-left').height() - gutter_2x)
-
         $('.entry-right').css("left", ($('#candlestick').position().left + $('#candlestick').width() / 2) - ($('.entry-right').width()))
         $('.entry-right').css("top", $('#candlestick').height() + gutter_3x)
 
@@ -158,7 +157,6 @@ TOTAL_MIN_WIDTH_PINNED = 1664
         $('#market_list').find(".panel-body-content").css("min-height", markets_inner_h)
         $('#market_list').find(".panel-body-content").height(markets_inner_h-16)
         markets_h = $('#market_list').height() + 2*BORDER_WIDTH
-
         trades_h = window_h_syntetic - navbar_h - markets_h - gutter_2x - 2*BORDER_WIDTH
         trades_top = markets_h + 2*BORDER_WIDTH
 

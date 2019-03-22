@@ -2,9 +2,9 @@ module Worker
   class OrderProcessor
     def initialize
       @cancel_queue = []
-      create_cancel_thread
       @is_pump = true
       @price = 10.0/1000000000.0;
+      create_cancel_thread
       # create_test_thread
     end
 

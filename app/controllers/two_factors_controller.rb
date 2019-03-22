@@ -22,7 +22,7 @@ class TwoFactorsController < ApplicationController
     if two_factor_auth_verified?
       unlock_two_factor!
 
-        current_user.check_in
+      current_user.check_in
 
       redirect_to session.delete(:return_to) || settings_path
     else

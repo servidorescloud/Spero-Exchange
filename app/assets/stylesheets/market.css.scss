@@ -627,7 +627,6 @@ left_side_tabs_wrapper {
   top: $gutter; left: $gutter;
   width: $market-list-width; height: $market-list-height;
   z-index: 999;
-
   .panel-default {
 
     width: $market-list-width;
@@ -642,8 +641,8 @@ left_side_tabs_wrapper {
     }
 
       td.change {
-          min-width: 72px;
-        }
+        min-width: 72px;
+      }
 
         .markets {
         tr { display: none; }
@@ -755,7 +754,7 @@ left_side_tabs_wrapper {
 
     span.input-group-addon {
       padding: 3px 6px 0px 6px;
-      min-width: 50px;
+      min-width: 60px;
       text-align: left;
       color: #aaa;
     }
@@ -780,7 +779,7 @@ left_side_tabs_wrapper {
     z-index: 10;
   }
 
-   .hint-fee  {
+  .hint-fee  {
     top: 12px;
     left: 72px;
     margin-left: 0px;
@@ -796,7 +795,7 @@ left_side_tabs_wrapper {
     z-index: 10;
   }
 
-   .fee-discount-info  {
+  .fee-discount-info  {
     top: 103px;
     left: 80px;
     margin-left: 0px;
@@ -821,7 +820,6 @@ left_side_tabs_wrapper {
     position: absolute;
     i.fa { margin-left: 4px; }
   }
-
   input[type=checkbox].css-checkbox 
   { 
     position: absolute;  
@@ -831,10 +829,10 @@ left_side_tabs_wrapper {
     visibility: hidden;
   } 
 
-   input[type=checkbox].css-checkbox + label.css-label 
+  input[type=checkbox].css-checkbox + label.css-label 
   { padding-left:15px; height:13px;  display:inline-block; line-height:13px; background-repeat:no-repeat; background-position: 0 0; font-size:13px; vertical-align:middle; cursor:pointer; } 
 
-   input[type=checkbox].css-checkbox:checked  + label.css-label { background-position: 0 -13px; }  .css-label{ background-image:url(https://exchange.sperocoin.org/lite-x-red-13-3.png); }
+  input[type=checkbox].css-checkbox:checked  + label.css-label { background-position: 0 -13px; }  .css-label{ background-image:url(https://exchange.sperocoin.org/lite-x-red-13-3.png); }
 
   .row-tips {
     margin-top: 18px;

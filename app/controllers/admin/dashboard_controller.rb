@@ -35,7 +35,7 @@ module Admin
       res = ActiveRecord::Base.connection.exec_query(sql).first
       slice = DateTime.now.to_i
 
-       if res != nil
+      if res != nil
         slice = res['result'].to_i
       end
 
@@ -54,13 +54,13 @@ module Admin
       # @currencies_summary = []
       # collect_currencies_summary
       @currencies_summary = Currency.all.map(&:summary)
-
       @register_count = Member.count
 
       @turnover = []
       collect_turnover_summary
 
       @sessions = []
+
       date = DateTime.now
       for i in 1..7
         datefrom = date.strftime("%Y-%m-%d 00:00:00")

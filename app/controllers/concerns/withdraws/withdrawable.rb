@@ -12,12 +12,12 @@ module Withdraws
       @verified = current_user.id_document_verified?
       @local_sum = params[:withdraw][:sum]
 
-       if !@local_sum
+      if !@local_sum
         render text: I18n.t('private.withdraws.create.amount_empty_error'), status: 403
         return
       end
 
-       if !@verified && channel.currency_obj.withdraw_limit < @local_sum
+      if !@verified && channel.currency_obj.withdraw_limit < @local_sum
         render text: I18n.t('private.withdraws.create.unverified_withdraw_limit_error', limit: channel.currency_obj.withdraw_limit), status: 403
         return
       end
@@ -29,7 +29,7 @@ module Withdraws
         last_withdraw = res['result']
       end
 
-       @current_date_time = DateTime.now
+      @current_date_time = DateTime.now
       Rails.logger.info "[Withdraw]: last = " + last_withdraw.to_i.to_s + ", current = " + @current_date_time.to_i.to_s + ", diff = " + (@current_date_time.to_i - last_withdraw.to_i).to_s + ", sql = " + sql
 
       if @current_date_time.to_i - last_withdraw.to_i < 40
@@ -42,13 +42,13 @@ module Withdraws
       @current_withdraws = Withdraw.with_aasm_state(:done).where(member_id: current_user.id, currency: @channel.currency_obj.id, created_at: @current_date...@current_date_time).pluck(:amount)
       @withdraw_amount = @current_withdraws.sum
 
-       if !@withdraw_amount
+      if !@withdraw_amount
         @withdraw_amount = 0
       end
 
-       #Rails.logger.info "withdraw_day_limit " + channel.currency_obj.withdraw_day_limit.to_s + " db_amount " + @withdraw_amount.to_s
+      #Rails.logger.info "withdraw_day_limit " + channel.currency_obj.withdraw_day_limit.to_s + " db_amount " + @withdraw_amount.to_s
 
-       if !@verified && channel.currency_obj.withdraw_day_limit < @withdraw_amount
+      if !@verified && channel.currency_obj.withdraw_day_limit < @withdraw_amount
         render text: I18n.t('private.withdraws.create.unverified_withdraw_day_limit_error', limit: channel.currency_obj.withdraw_day_limit), status: 403
         return
       end
@@ -90,7 +90,6 @@ module Withdraws
     end
 
     def withdraw_params
-      params[:withdraw][:fee] = channel.fee
       params[:withdraw][:currency] = channel.currency
       params[:withdraw][:member_id] = current_user.id
       params.require(:withdraw).permit(:fund_uid, :member_id, :currency, :sum)

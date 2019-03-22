@@ -3,7 +3,7 @@
     total_assets: '#total_assets'
 
   @updateAccount = (event, data) ->
-      #console.log(event, data)
+    #console.log(event, data)
     for currency, account of data
       amount = (new BigNumber(account.locked)).plus(new BigNumber(account.balance))
       @$node.find("tr.#{currency} span.amount").text(formatter.round(amount, 4))

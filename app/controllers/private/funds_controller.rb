@@ -3,7 +3,7 @@ module Private
     layout 'funds'
 
     before_action :auth_activated!
-    # we do not need a fully verified account here
+    # we do not need fully verified user for that
     # before_action :auth_verified!
     before_action :two_factor_activated!
 

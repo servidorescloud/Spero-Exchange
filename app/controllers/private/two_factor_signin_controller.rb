@@ -43,5 +43,5 @@ module Private
     def unbind
     end
 
-   end
+  end
 end

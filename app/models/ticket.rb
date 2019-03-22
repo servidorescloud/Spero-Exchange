@@ -30,7 +30,7 @@ class Ticket < ActiveRecord::Base
     "[" + id.to_s + "] " + (title.blank? ? content.truncate(n) : title.truncate(n))
   end
 
-   def title_for_display_user(n = 60)
+  def title_for_display_user(n = 60)
     title.blank? ? content.truncate(n) + " - [" + id.to_s + "]" : title.truncate(n) + " - [" + id.to_s + "]"
   end
 

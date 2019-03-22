@@ -5,7 +5,7 @@ module Private
     before_action :auth_activated!
     before_action :two_factor_activated!
 
-     def index
+    def index
       @product = current_user.dividend.product
       @dividend = current_user.dividend
       @asset = current_user.dividend.asset

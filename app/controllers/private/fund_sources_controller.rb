@@ -12,8 +12,7 @@ module Private
     end
 
     def update
-      account = 
-current_user.accounts.with_currency(fund_source.currency).first
+      account = current_user.accounts.with_currency(fund_source.currency).first
       account.update default_withdraw_fund_source_id: params[:id]
 
       head :ok

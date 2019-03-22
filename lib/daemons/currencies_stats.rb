@@ -44,7 +44,7 @@ while($running) do
       res = ActiveRecord::Base.connection.execute(sql)      
     end
 
-     for i in 1..7
+    for i in 1..7
       datefrom = date.strftime("%Y-%m-%d 00:00:00")
       dateto = date.strftime("%Y-%m-%d 23:59:59")
 

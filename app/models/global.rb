@@ -78,9 +78,9 @@ class Global
     end
   end
 
-def h24_volume2
+  def h24_volume2
     Rails.cache.fetch key('h24_volume2', 5), expires_in: 24.hours do
-      Trade.with_currency(currency).h24.sum(:price) || ZERO
+      Trade.with_currency(currency).h24.sum('volume * price') || ZERO
     end
   end
 
