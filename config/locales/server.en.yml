@@ -334,7 +334,7 @@ en:
               match: invalid
             amount:
               poor: insufficient
-              bank_min: Less 5000.00
+              bank_min: Less 2000.00
         withdraws/satoshi:
           attributes:
             fund_uid:
@@ -388,23 +388,17 @@ en:
           sum: limit sum price %{l} ~ %{h}
           precision: minimum precision %{p}
   banks:
-    icbc: Industryand Commercial Bank of China
-    cbc: Construction Bank of China
-    bc: Bank of China
-    bcm: Bank of Communications
-    abc: Agriculture Bank of China
-    cmb: China Merchants Bank Ltd
-    cmbc: China Minsheng Banking Co., Ltd
-    cncb: China CITIC Bank
-    hxb: Hua Xia Bank Co., Ltd.
-    cib: Industrial Bank Co., Ltd
-    spdb: Shanghai Pudong Development Bank
-    bob: Bank of Beijing
-    ceb: China Everbright Bank CO.LTD
-    sdb: Shenzhen Development Bank
-    pab: Ping An Bank Co., Ltd.
-    gdb: Guangdong Development Bank
-    psbc: Postal Savings Bank of China
+    bb: 001 - Banco Do Brasil
+    cef: 104 - Caixa Econômica Federal
+    bmg: 318 - Banco BMG
+    inter: 077 - Banco Inter
+    itau: 341 - Itaú Unibanco
+    pan: 623 - Banco Pan
+    safra: 422 - Banco Safra
+    santander: 033 - Banco Santander
+    bbv: 655 - Banco Votorantim
+    bradesco: 237 - Banco Bradesco
+    nubank: 260 - Nu Pagamentos S.A
   market:
     currency:
       btc: BTC
@@ -1395,7 +1389,7 @@ en:
     placeholders:
       deposit:
         bank:
-          amount: Minimum amount 100
+          amount: Minimum amount 20
       session:
         email: E-mail Address
         password: Password
@@ -1419,7 +1413,7 @@ en:
         password: Please set your login password!
       withdraw:
         bank:
-          sum: Minimum amount 100
+          sum: Minimum amount 10
         satoshi:
           sum: Minimum amount 0.001
           fund_extra: Enter a label for this address (optional)
@@ -2401,7 +2395,7 @@ en:
       key: Bank Transfer
       title: Bank Transfer
       intro: Bank transfer deposits, Recommend for large recharge
-      latency: 30 minutes
+      latency: 24 hours
       transfer: Manual
       go: Withdraw
     satoshi:

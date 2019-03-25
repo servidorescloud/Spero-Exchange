@@ -5,24 +5,17 @@ en:
     cancel: Cancel
     confirm: Confirm
     banks:
-      icbc: Industryand Commercial Bank of China
-      cbc: Construction Bank of China
-      bc: Bank of China
-      bcm: Bank of Communications
-      abc: Agriculture Bank of China
-      cmb: China Merchants Bank Ltd
-      cmbc: China Minsheng Banking Co., Ltd
-      cncb: China CITIC Bank
-      hxb: Hua Xia Bank Co., Ltd.
-      cib: Industrial Bank Co., Ltd
-      spdb: Shanghai Pudong Development Bank
-      bob: Bank of Beijing
-      ceb: China Everbright Bank CO.LTD
-      sdb: Shenzhen Development Bank
-      pab: Ping An Bank Co., Ltd.
-      gdb: Guangdong Development Bank
-      psbc: Postal Savings Bank of China
-      bos: Bank of Shanghai
+      bb: 001 - Banco Do Brasil
+      cef: 104 - Caixa Econômica Federal
+      bmg: 318 - Banco BMG
+      inter: 077 - Banco Inter
+      itau: 341 - Itaú Unibanco
+      pan: 623 - Banco Pan
+      safra: 422 - Banco Safra
+      santander: 033 - Banco Santander
+      bbv: 655 - Banco Votorantim
+      bradesco: 237 - Banco Bradesco
+      nubank: 260 - Nu Pagamentos S.A
     fund_sources:
       manage_bank_account: Bank Account Management
       manage_bank_account_desc: To facilitate the choice of bank withdrawals address
@@ -77,11 +70,11 @@ en:
         add: Add
         manage: Gerenciar
         amount: Valor do Depósito
-        min_amount: Pelo menos 50 Reais
+        min_amount: Valor Mínimo de R$20,00 (Vinte Reais)
         to_account: Conta
-        to_name: Nome
-        to_bank_name: Nome do Banco
-        opening_bank_name: Conta onde foi criado
+        to_name: Favorecido
+        to_bank_name: Agência
+        opening_bank_name: Banco
         remark: 'Código de Referência (Código de Identificação da Transferência)'
 
       deposit_btc:
@@ -144,7 +137,7 @@ en:
         withdraw_amount: Retirar Montante
         manage_withdraw: Gerenciar Retirada
         fee_explain: Sobre as taxas
-        min: Pelo Menos
+        min: Quantidade Mínima 
         withdraw_all: Retirar tudo
 
       withdraw_btc:

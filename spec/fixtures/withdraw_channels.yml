@@ -10,9 +10,9 @@
   currency: brl
   fixed: 2
   fee_max: 0
-  min: 100
-  max: 50000
-  fee: 0.00
+  min: 10
+  max: 2000
+  fee: 10.00
   proportion: true
   inuse: true
   type: WithdrawChannelBank
