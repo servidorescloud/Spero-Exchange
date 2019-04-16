@@ -9,8 +9,8 @@
   key: bank
   currency: brl
   fixed: 2
-  fee_max: 0
-  min: 10
+  fee_max: 10.00
+  min: 30
   max: 2000
   fee: 10.00
   proportion: true
