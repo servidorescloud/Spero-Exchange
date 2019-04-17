@@ -188,8 +188,9 @@ A JavaScript Runtime is needed for Asset Pipeline to work. Any runtime will do b
     ＃ Install dependency gems
     gem update --system
     gem update
-    Em caso de erro com o Json: bundle update json
     bundle install --without development test --path vendor/bundle
+    
+    Em caso de erro com o Json: bundle update json
 
 ##### Configure Peatio
 
