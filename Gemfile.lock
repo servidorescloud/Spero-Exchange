@@ -455,7 +455,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.1.2)
   better_errors
   binding_of_caller
-  bootstrap-sass (~> 3.2.0.2)
+  bootstrap-sass (~> 3.2.0.4)
   bootstrap-wysihtml5-rails
   bourbon
   browser (~> 0.8.0)
