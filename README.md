@@ -1,4 +1,4 @@
-# SPEROCOIN EXCHANGER - A Exchange feita pela comunidade!
+# SPEROCOIN EXCHANGE - A Exchange feita pela comunidade!
 =====================================
 
 ### Fique por dentro de todas as nossas novidades acessando o nosso [website](https://sperocoin.org) e também nos acompanhando no aplicativo [Trello](https://trello.com/b/jYZvXKDs/sperocoin)!
