@@ -23,6 +23,15 @@ Create (if it doesn’t exist) deploy user, and assign it to the sudo group:
 
 Re-login as deploy user
 
+
+Creating file for swap memory:
+
+    sudo fallocate -l 4GB /swapfile
+    sudo chmod 600 /swapfile
+    sudo mkswap /swapfile
+    sudo nano /etc/fstab
+
+/swapfile none swap sw 0 0
 ### 2. Install Ruby
 
 Make sure your system is up-to-date.
@@ -49,13 +58,13 @@ Installing [rbenv](https://github.com/sstephenson/rbenv) using a Installer
 
 Install Ruby through rbenv:
 
-    rbenv install --verbose 2.2.2
-    rbenv global 2.2.2
+    rbenv install --verbose 2.2.7
+    rbenv global 2.2.7
 
 Install bundler
 
     echo "gem: --no-ri --no-rdoc" > ~/.gemrc
-    gem install bundler
+    gem install bundler -v 1.9.2
     rbenv rehash
 
 ### 3. Install MySQL
