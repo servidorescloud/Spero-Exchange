@@ -26,6 +26,8 @@ class CoinRPC
         name = 'WOA_BTC'
       elsif c.proto == 'CNT'
         name = 'CNT'
+      elsif c.proto == 'NBR'
+        name = 'NBR'
       else
         name = c[:handler]
       end
@@ -526,4 +528,147 @@ class CoinRPC
     end
   end
 
-end
+
+class NBR < self
+    def handle(name, *args)
+      post_body = {"jsonrpc" => "2.0", 'method' => name, 'params' => args, 'id' => '1' }.to_json
+      resp = JSON.parse( http_post_request(post_body) )
+      puts "FNT <- " + resp.to_json
+      raise JSONRPCError, resp['error'] if resp['error']
+      result = resp['result']
+      #result.symbolize_keys! if result.is_a? Hash
+      result
+    end
+
+    def handle_one(name, arg)
+      post_body = {"jsonrpc" => "2.0", 'method' => name, 'params' => arg, 'id' => '1' }.to_json
+      resp = JSON.parse( http_post_request(post_body) )
+      raise JSONRPCError, resp['error'] if resp['error']
+      result = resp['result']
+      #result.symbolize_keys! if result.is_a? Hash
+      result
+    end
+
+    def handle_only(name, arg)
+      post_body = {"jsonrpc" => "2.0", 'method' => name, 'id' => '1' }.to_json
+      resp = JSON.parse( http_post_request(post_body) )
+      raise JSONRPCError, resp['error'] if resp['error']
+      result = resp['result']
+      #result.symbolize_keys! if result.is_a? Hash
+      result
+    end
+
+    def http_post_request(post_body)
+      http    = Net::HTTP.new(@uri.host, @uri.port)
+      request = Net::HTTP::Post.new(@uri.request_uri)
+      request.content_type = 'application/json'
+      #request.basic_auth uri.user, uri.password
+      request.body = post_body
+      puts post_body
+      @reply = http.request(request).body
+      puts @reply
+      return @reply
+    rescue Errno::ECONNREFUSED => e
+      raise ConnectionRefusedError
+    end
+
+
+    def safe_getbalance
+      begin
+        getbalance
+      rescue => ex
+        puts  "[error]: " + ex.message + "\n" + ex.backtrace.join("\n") + "\n"
+        'N/A'
+      end
+    end
+
+    def getbalance
+      result = handle_only("getbalance", "")
+      balance = result['available_balance'].to_f /100000000.0
+      return balance
+    end
+
+    def gettransaction(txid)
+      parameters =
+      {
+        transactionHash: txid
+      }
+      transaction = handle_one("getTransactions", parameters)
+      confirmations = Integer(transaction['transactions']['blockIndex'])
+      if confirmations > 0
+        result = handle_only("getStatus", "")
+        confirmations = Integer(result['blockCount']) - confirmations
+      end
+      result =  {
+          confirmations: confirmations,
+          time: Time.now.to_i,
+          details:[]
+        }
+      if transaction['transactions']['transfers'] == nil
+        return result
+      end
+      transaction['transactions']['transfers'].each do |destination|
+        tx = {
+            address: destination['address'],
+            amount: destination['amount'].to_f / 1000000000000.0,
+            category: "receive"
+          }
+        result[:details].push(tx)
+      end
+      return result
+    end
+
+
+    def settxfee
+    end
+
+    def sendtoaddress(from, address, amount)
+      parameters =
+      {
+        anonymity: 0,
+        fee: 10000,
+        mixin: 1
+        unlock_time: 0,
+        transfers:
+        [
+          {
+            amount: Integer(amount * 100000000.0),
+            address: address
+          }
+        ],
+        changeAddress: address
+      }
+
+      result = handle_one("transfer", parameters)
+      return result['tx_hash']
+    end
+
+    def getnewaddress(base_account, digest)
+      parameters =
+      {
+      }.to_json
+
+      result = handle_only("createAddress", "")
+      return result['address']
+    end
+
+    def getfee(size)
+      return (10000.0/100000000.0).to_f
+    end
+
+    def validateaddress(address)
+    end
+
+    def getblockchaininfo
+
+      result = handle_only("getStatus", "")
+
+      {
+        blocks: Integer(result['blockCount']),
+        headers: 0,
+        mediantime: 0
+      }
+    end
+  end
+  
+  end
