@@ -41,3 +41,19 @@
     accounts:
       -
         address: 0x4bA2474e063Aec44e23F2Bf7Fb9e4e2878dBaB44
+
+- id: 2
+  key: nbr
+  code: nbr
+  symbol: "N"
+  coin: true
+  family: NBR
+  quick_withdraw_max: 0
+  rpc: http://username:password@0.0.0.0:15009/json_rpc
+  blockchain: http://nbrexplorer.niobiocash.net/?hash={txid}#blockchain_payment_id
+  address_url: http://nbrexplorer.niobiocash.net/?address={address}#blockchain_payment_id
+  assets:
+    accounts:
+      -
+        address: WALLET BASE NBR
+        
