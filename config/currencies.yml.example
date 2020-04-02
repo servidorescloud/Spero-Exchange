@@ -41,3 +41,18 @@
     accounts:
       -
         address: 0x4bA2474e063Aec44e23F2Bf7Fb9e4e2878dBaB44
+
+- id: 4
+  key: cryptonote
+  code: nbr
+  symbol: "N"
+  coin: true
+  family: XMR
+  quick_withdraw_max: 0
+  rpc: http://username:password@127.0.0.1:8087
+  blockchain: https://nbrexplorer.niobiocash.net/?hash={txid}#blockchain_transaction
+  address_url: https://nbrexplorer.niobiocash.net/?idpayment={address}#address
+  assets:
+    accounts:
+      -
+        address: NEBPKaown9uK2T4PvyWXVpAHdotb7NZx7XszLKFswfh2RAqSKxEfx6y99Hib3PihJVEU4tR1ZQEtLLiCfeR5zubTUpzGjpU
