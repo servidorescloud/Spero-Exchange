@@ -40,8 +40,8 @@ Installing [rbenv](https://github.com/sstephenson/rbenv) using a Installer
 
 Install Ruby through rbenv:
 
-    rbenv install 2.3.0
-    rbenv global 2.3.0
+    rbenv install 2.7.0
+    rbenv global 2.7.0
 
 Install bundler
 
